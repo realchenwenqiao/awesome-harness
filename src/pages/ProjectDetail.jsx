@@ -40,19 +40,19 @@ function ProjectDetail() {
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
       {/* Header */}
       <header className={`sticky top-0 z-50 backdrop-blur-lg border-b transition-colors duration-300 ${darkMode ? 'bg-gray-900/80 border-gray-800' : 'bg-white/80 border-gray-200'}`}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+        <div className="max-w-5xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-14 md:h-16">
             <Link
               to="/"
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${darkMode ? 'text-gray-400 hover:text-white hover:bg-gray-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}
+              className={`flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 rounded-lg transition-all text-sm md:text-base ${darkMode ? 'text-gray-400 hover:text-white hover:bg-gray-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}
             >
               ← 返回列表
             </Link>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3">
               {prevProject && (
                 <Link
                   to={`/project/${prevProject.id}`}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all hover:scale-105 ${darkMode ? 'bg-gray-800 text-white hover:bg-gray-700' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                  className={`px-2.5 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-all hover:scale-105 hidden sm:inline-flex ${darkMode ? 'bg-gray-800 text-white hover:bg-gray-700' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
                 >
                   ← 上一个
                 </Link>
@@ -60,7 +60,7 @@ function ProjectDetail() {
               {nextProject && (
                 <Link
                   to={`/project/${nextProject.id}`}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all hover:scale-105 ${darkMode ? 'bg-gray-800 text-white hover:bg-gray-700' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                  className={`px-2.5 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-all hover:scale-105 hidden sm:inline-flex ${darkMode ? 'bg-gray-800 text-white hover:bg-gray-700' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
                 >
                   下一个 →
                 </Link>
@@ -77,33 +77,33 @@ function ProjectDetail() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className={`p-8 rounded-3xl border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+      <main className="max-w-5xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-8">
+        <div className={`p-5 md:p-8 rounded-2xl md:rounded-3xl border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
           {/* Header */}
-          <div className="flex items-start justify-between mb-6">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+            <div className="flex items-center gap-3 md:gap-4">
               {project.companyLogo && (
-                <img src={project.companyLogo} alt={project.company} className="w-16 h-16 rounded-2xl object-contain" />
+                <img src={project.companyLogo} alt={project.company} className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl object-contain flex-shrink-0" />
               )}
-              <div>
-                <h1 className={`text-3xl font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{project.name}</h1>
-                <p className={`text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>{project.company}</p>
+              <div className="min-w-0">
+                <h1 className={`text-xl md:text-3xl font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{project.name}</h1>
+                <p className={`text-sm md:text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>{project.company}</p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <span className={`px-4 py-2 rounded-xl text-sm font-medium ${darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>
+            <div className="flex items-center gap-2 md:gap-3">
+              <span className={`px-2.5 md:px-4 py-1.5 md:py-2 rounded-xl text-xs md:text-sm font-medium flex-shrink-0 ${darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>
                 {project.language}
               </span>
-              <span className={`px-4 py-2 rounded-xl text-sm font-medium flex items-center gap-1 ${darkMode ? 'bg-yellow-900/30 text-yellow-400' : 'bg-yellow-50 text-yellow-700'}`}>
+              <span className={`px-2.5 md:px-4 py-1.5 md:py-2 rounded-xl text-xs md:text-sm font-medium flex items-center gap-1 flex-shrink-0 ${darkMode ? 'bg-yellow-900/30 text-yellow-400' : 'bg-yellow-50 text-yellow-700'}`}>
                 ⭐ {project.stars.toLocaleString()}
               </span>
             </div>
           </div>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-1.5 md:gap-2 mb-6">
             {project.tags.map((tag, i) => (
-              <span key={i} className={`px-3 py-1 rounded-lg text-sm ${darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>{tag}</span>
+              <span key={i} className={`px-2.5 md:px-3 py-1 rounded-lg text-xs md:text-sm ${darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>{tag}</span>
             ))}
           </div>
 
