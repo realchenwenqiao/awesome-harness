@@ -1,0 +1,144 @@
+[
+  {
+    "id": "ant-design",
+    "name": "Ant Design",
+    "company": "阿里巴巴",
+    "companyLogo": "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
+    "description": "企业级 UI 设计语言和 React 组件库",
+    "github": "https://github.com/ant-design/ant-design",
+    "stars": 92000,
+    "language": "TypeScript",
+    "tags": ["UI组件库", "React", "设计系统"],
+    "install": {
+      "npm": "npm install antd",
+      "yarn": "yarn add antd",
+      "pnpm": "pnpm add antd"
+    },
+    "usage": "import { Button, DatePicker } from 'antd';\n\nfunction App() {\n  return (\n    <div>\n      <Button type=\"primary\">按钮</Button>\n      <DatePicker />\n    </div>\n  );\n}",
+    "chineseDescription": "Ant Design 是阿里巴巴推出的企业级 UI 设计语言，提供了丰富的 React 组件，广泛应用于中后台管理系统。"
+  },
+  {
+    "id": "vant",
+    "name": "Vant",
+    "company": "字节跳动",
+    "companyLogo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkul/1656335419611-4c319630-0582-4a9d-ba3f-55874735e16d.png",
+    "description": "轻量、可靠的移动端组件库",
+    "github": "https://github.com/youzan/vant",
+    "stars": 23000,
+    "language": "TypeScript",
+    "tags": ["移动端", "UI组件库", "Vue"],
+    "install": {
+      "npm": "npm install vant",
+      "yarn": "yarn add vant",
+      "pnpm": "pnpm add vant"
+    },
+    "usage": "import { Button, Cell } from 'vant';\nimport 'vant/lib/index.css';\n\nfunction App() {\n  return (\n    <div>\n      <Button type=\"primary\">按钮</Button>\n      <Cell title=\"单元格\" />\n    </div>\n  );\n}",
+    "chineseDescription": "Vant 是字节跳动推出的轻量级移动端组件库，提供了 60+ 高质量组件，非常适合 H5 和小程序开发。"
+  },
+  {
+    "id": "element-plus",
+    "name": "Element Plus",
+    "company": "饿了么",
+    "companyLogo": "https://element-plus.org/images/element-plus-logo.svg",
+    "description": "Vue 3 组件库",
+    "github": "https://github.com/element-plus/element-plus",
+    "stars": 24000,
+    "language": "TypeScript",
+    "tags": ["UI组件库", "Vue 3"],
+    "install": {
+      "npm": "npm install element-plus",
+      "yarn": "yarn add element-plus",
+      "pnpm": "pnpm add element-plus"
+    },
+    "usage": "import { createApp } from 'vue';\nimport ElementPlus from 'element-plus';\nimport 'element-plus/dist/index.css';\nimport App from './App.vue';\n\nconst app = createApp(App);\napp.use(ElementPlus);\napp.mount('#app');",
+    "chineseDescription": "Element Plus 是饿了么推出的 Vue 3 组件库，是 Element UI 的升级版本，提供了丰富的中后台组件。"
+  },
+  {
+    "id": "echarts",
+    "name": "Apache ECharts",
+    "company": "百度",
+    "companyLogo": "https://echarts.apache.org/images/echarts-logo.png",
+    "description": "强大的数据可视化图表库",
+    "github": "https://github.com/apache/echarts",
+    "stars": 59000,
+    "language": "TypeScript",
+    "tags": ["数据可视化", "图表"],
+    "install": {
+      "npm": "npm install echarts",
+      "yarn": "yarn add echarts",
+      "pnpm": "pnpm add echarts"
+    },
+    "usage": "import * as echarts from 'echarts';\n\nconst chartDom = document.getElementById('chart');\nconst myChart = echarts.init(chartDom);\n\nconst option = {\n  title: { text: 'ECharts 示例' },\n  xAxis: { data: ['Mon', 'Tue', 'Wed'] },\n  yAxis: {},\n  series: [{ type: 'bar', data: [5, 20, 36] }]\n};\n\nmyChart.setOption(option);",
+    "chineseDescription": "ECharts 是百度开源的强大数据可视化库，提供了 20+ 种图表类型，支持千万级数据渲染，是国内最流行的图表库之一。"
+  },
+  {
+    "id": "taro",
+    "name": "Taro",
+    "company": "京东",
+    "companyLogo": "https://img12.360buyimg.com/imagetools/jfs/t1/208024/33/25335/101057/647d2253F801c8370/8c29978d40880863.png",
+    "description": "开放式跨端跨框架解决方案",
+    "github": "https://github.com/NervJS/taro",
+    "stars": 35000,
+    "language": "TypeScript",
+    "tags": ["跨端", "小程序", "React"],
+    "install": {
+      "npm": "npm install -g @tarojs/cli",
+      "yarn": "yarn global add @tarojs/cli"
+    },
+    "usage": "# 创建项目\ntaro init myApp\n\n# 进入项目\ncd myApp\n\n# 开发微信小程序\nnpm run dev:weapp\n\n# 开发 H5\nnpm run dev:h5",
+    "chineseDescription": "Taro 是京东推出的跨端开发框架，支持使用 React/Vue 语法开发小程序、H5、React Native 等多端应用。"
+  },
+  {
+    "id": "mpvue",
+    "name": "mpvue",
+    "company": "美团",
+    "companyLogo": "https://github.com/Meituan-Dianping/mpvue/raw/master/assets/logo.png",
+    "description": "使用 Vue.js 开发小程序的前端框架",
+    "github": "https://github.com/Meituan-Dianping/mpvue",
+    "stars": 21000,
+    "language": "JavaScript",
+    "tags": ["小程序", "Vue"],
+    "install": {
+      "npm": "npm install -g @vue/cli",
+      "yarn": "yarn global add @vue/cli"
+    },
+    "usage": "# 创建项目\nvue init mpvue/mpvue-quickstart my-project\n\n# 进入项目\ncd my-project\n\n# 安装依赖\nnpm install\n\n# 开发\nnpm run dev",
+    "chineseDescription": "mpvue 是美团推出的小程序开发框架，允许使用 Vue.js 语法开发微信小程序，让 Web 开发者快速上手小程序开发。"
+  },
+  {
+    "id": "arco-design",
+    "name": "Arco Design",
+    "company": "字节跳动",
+    "companyLogo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkul/1656335419611-4c319630-0582-4a9d-ba3f-55874735e16d.png",
+    "description": "字节跳动出品的企业级设计系统",
+    "github": "https://github.com/arco-design/arco-design",
+    "stars": 5000,
+    "language": "TypeScript",
+    "tags": ["UI组件库", "React", "Vue"],
+    "install": {
+      "npm": "npm install @arco-design/web-react",
+      "yarn": "yarn add @arco-design/web-react",
+      "pnpm": "pnpm add @arco-design/web-react"
+    },
+    "usage": "import { Button, Message } from '@arco-design/web-react';\nimport '@arco-design/web-react/dist/css/arco.css';\n\nfunction App() {\n  return (\n    <div>\n      <Button type=\"primary\" onClick={() => Message.success('成功!')}>\n        按钮\n      </Button>\n    </div>\n  );\n}",
+    "chineseDescription": "Arco Design 是字节跳动出品的企业级设计系统，提供了 React 和 Vue 两个版本，设计风格简洁现代，适合中后台系统。"
+  },
+  {
+    "id": "amis",
+    "name": "amis",
+    "company": "百度",
+    "companyLogo": "https://aisuda.bcebos.com/amis/zh-CN/images/logo.png",
+    "description": "低代码前端框架，用 JSON 配置生成页面",
+    "github": "https://github.com/baidu/amis",
+    "stars": 17000,
+    "language": "TypeScript",
+    "tags": ["低代码", "前端框架"],
+    "install": {
+      "npm": "npm install amis",
+      "yarn": "yarn add amis",
+      "pnpm": "pnpm add amis"
+    },
+    "usage": "import { render } from 'amis';\n\nconst schema = {\n  type: 'page',\n  title: 'amis 示例',\n  body: [\n    { type: 'tpl', tpl: 'Hello World!' }\n  ]\n};\n\nrender(schema, document.getElementById('root'));",
+    "chineseDescription": "amis 是百度推出的低代码前端框架，通过 JSON 配置就能生成完整的管理后台页面，极大提升开发效率。"
+  }
+]
