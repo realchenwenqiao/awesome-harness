@@ -1,5 +1,335 @@
 [
   {
+    "id": "doubao",
+    "name": "豆包大模型",
+    "company": "字节跳动",
+    "companyLogo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkul/1656335419611-4c319630-0582-4a9d-ba3f-55874735e16d.png",
+    "description": "字节跳动豆包大模型 API & SDK",
+    "github": "https://github.com/volcengine/volcengine-python-sdk",
+    "stars": 500,
+    "language": "Python",
+    "tags": ["大模型", "LLM", "API", "Python"],
+    "category": "ai-model",
+    "install": {
+      "pip": "pip install volcengine-python-sdk",
+      "npm": "npm install @volcengine/ark"
+    },
+    "usage": "from volcengine.ark import Ark\n\nark = Ark(\n    api_key=\"your-api-key\",\n    model=\"doubao-pro-32k\"\n)\n\nresponse = ark.chat.completions.create(\n    messages=[\n        {\"role\": \"user\", \"content\": \"你好！\"}\n    ]\n)\nprint(response.choices[0].message.content)",
+    "chineseDescription": "豆包是字节跳动推出的大语言模型，提供了强大的自然语言理解和生成能力。支持多轮对话、代码生成、文档分析等多种功能。"
+  },
+  {
+    "id": "vllm",
+    "name": "vLLM",
+    "company": "字节跳动",
+    "companyLogo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkul/1656335419611-4c319630-0582-4a9d-ba3f-55874735e16d.png",
+    "description": "高吞吐量大模型推理服务框架",
+    "github": "https://github.com/vllm-project/vllm",
+    "stars": 19000,
+    "language": "Python",
+    "tags": ["推理框架", "LLM", "高性能"],
+    "category": "ai-infra",
+    "install": {
+      "pip": "pip install vllm"
+    },
+    "usage": "from vllm import LLM, SamplingParams\n\nllm = LLM(model=\"facebook/opt-125m\")\n\nprompts = [\"Hello, my name is\", \"The capital of France is\"]\nsampling_params = SamplingParams(temperature=0.8, top_p=0.95)\n\noutputs = llm.generate(prompts, sampling_params)\n\nfor output in outputs:\n    prompt = output.prompt\n    generated_text = output.outputs[0].text\n    print(f\"Prompt: {prompt!r}, Generated: {generated_text!r}\")",
+    "chineseDescription": "vLLM 是字节跳动开源的高吞吐量大模型推理服务框架，通过 PagedAttention 技术实现了高效的显存管理，推理吞吐量比 HuggingFace Transformers 高出 24 倍。"
+  },
+  {
+    "id": "spring",
+    "name": "ByteDance Spring",
+    "company": "字节跳动",
+    "companyLogo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkul/1656335419611-4c319630-0582-4a9d-ba3f-55874735e16d.png",
+    "description": "LLM 对齐训练框架",
+    "github": "https://github.com/volcengine/spring",
+    "stars": 2000,
+    "language": "Python",
+    "tags": ["训练框架", "RLHF", "对齐"],
+    "category": "ai-training",
+    "install": {
+      "pip": "pip install bytedance-spring"
+    },
+    "usage": "from spring import RLHFTrainer\n\ntrainer = RLHFTrainer(\n    model=\"llama-7b\",\n    reward_model=\"reward-model-v1\"\n)\n\ntrainer.train(\n    dataset=\"preference-data\",\n    num_epochs=3,\n    learning_rate=1e-5\n)",
+    "chineseDescription": "Spring 是字节跳动开源的 LLM 对齐训练框架，支持 SFT（监督微调）、RM（奖励模型）、PPO（近端策略优化）等完整的 RLHF 流程。"
+  },
+  {
+    "id": "lightseq",
+    "name": "LightSeq",
+    "company": "字节跳动",
+    "companyLogo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkul/1656335419611-4c319630-0582-4a9d-ba3f-55874735e16d.png",
+    "description": "高性能 Transformer 训练和推理库",
+    "github": "https://github.com/bytedance/lightseq",
+    "stars": 7600,
+    "language": "C++",
+    "tags": ["Transformer", "高性能", "CUDA"],
+    "category": "ai-infra",
+    "install": {
+      "pip": "pip install lightseq"
+    },
+    "usage": "import lightseq\nfrom transformers import BertTokenizer\n\nmodel = lightseq.BertForMaskedLM.from_pretrained(\"bert-base-uncased\")\ntokenizer = BertTokenizer.from_pretrained(\"bert-base-uncased\")\n\ntext = \"Hello, I'm a [MASK] model.\"\ninputs = tokenizer(text, return_tensors=\"pt\")\noutputs = model(**inputs)\nprint(outputs.logits.shape)",
+    "chineseDescription": "LightSeq 是字节跳动开源的高性能 Transformer 训练和推理库，支持 BERT、GPT、T5 等多种模型，速度比 HuggingFace 快 3-10 倍。"
+  },
+  {
+    "id": "qwen",
+    "name": "通义千问 Qwen",
+    "company": "阿里巴巴",
+    "companyLogo": "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
+    "description": "阿里云通义千问大模型",
+    "github": "https://github.com/QwenLM/Qwen",
+    "stars": 15000,
+    "language": "Python",
+    "tags": ["大模型", "LLM", "多模态"],
+    "category": "ai-model",
+    "install": {
+      "pip": "pip install modelscope transformers accelerate"
+    },
+    "usage": "from modelscope import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"Qwen/Qwen-7B-Chat\",\n    device_map=\"auto\"\n)\ntokenizer = AutoTokenizer.from_pretrained(\"Qwen/Qwen-7B-Chat\")\n\nresponse, history = model.chat(tokenizer, \"你好！\", history=None)\nprint(response)",
+    "chineseDescription": "通义千问是阿里巴巴推出的大语言模型系列，包括 Qwen-7B、Qwen-14B、Qwen-72B 等多个版本，支持多模态理解和生成。"
+  },
+  {
+    "id": "langchain-alibaba",
+    "name": "通义千问 LangChain 集成",
+    "company": "阿里巴巴",
+    "companyLogo": "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
+    "description": "通义千问与 LangChain 集成",
+    "github": "https://github.com/AlibabaCloudDocs/tongyiqianlang",
+    "stars": 800,
+    "language": "Python",
+    "tags": ["LangChain", "LLM", "应用开发"],
+    "category": "ai-app",
+    "install": {
+      "pip": "pip install langchain langchain-community"
+    },
+    "usage": "from langchain_community.llms import Tongyi\nfrom langchain.chains import LLMChain\nfrom langchain.prompts import PromptTemplate\n\nllm = Tongyi(\"qwen-max\")\n\nprompt = PromptTemplate(\n    input_variables=[\"product\"],\n    template=\"为 {product} 写一个广告语\"\n)\n\nchain = LLMChain(llm=llm, prompt=prompt)\nprint(chain.run(\"智能音箱\"))",
+    "chineseDescription": "通义千问 LangChain 集成让你可以方便地在 LangChain 框架中使用通义千问大模型，快速构建 AI 应用。"
+  },
+  {
+    "id": "mindopt",
+    "name": "MindOpt",
+    "company": "阿里巴巴",
+    "companyLogo": "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
+    "description": "数学规划求解器",
+    "github": "https://github.com/aliyun/MindOpt",
+    "stars": 600,
+    "language": "C++",
+    "tags": ["优化", "运筹学", "数学规划"],
+    "category": "ai-optimization",
+    "install": {
+      "pip": "pip install mindopt"
+    },
+    "usage": "import mindopt as mo\n\nmodel = mo.Model()\n\nx = model.add_var(0, 10, name=\"x\")\ny = model.add_var(0, 10, name=\"y\")\n\nmodel.set_objective(x + y, mo.MAXIMIZE)\nmodel.add_constraint(x + 2 * y <= 8)\nmodel.add_constraint(2 * x + y <= 8)\n\nmodel.solve()\n\nprint(f\"x = {model.primal(x)}\")\nprint(f\"y = {model.primal(y)}\")\nprint(f\"objective = {model.objective_value()}\")",
+    "chineseDescription": "MindOpt 是阿里巴巴达摩院开发的数学规划求解器，支持线性规划、混合整数规划、二次规划等，广泛应用于物流调度、资源分配等场景。"
+  },
+  {
+    "id": "chatglm",
+    "name": "ChatGLM",
+    "company": "智谱 AI / 清华大学",
+    "companyLogo": "https://raw.githubusercontent.com/THUDM/ChatGLM3/main/resources/logo.png",
+    "description": "智谱 ChatGLM 大模型系列",
+    "github": "https://github.com/THUDM/ChatGLM3",
+    "stars": 13000,
+    "language": "Python",
+    "tags": ["大模型", "LLM", "对话"],
+    "category": "ai-model",
+    "install": {
+      "pip": "pip install modelscope transformers accelerate"
+    },
+    "usage": "from modelscope import AutoModel, AutoTokenizer\n\nmodel = AutoModel.from_pretrained(\n    \"ZhipuAI/chatglm3-6b\",\n    trust_remote_code=True,\n    device_map=\"auto\"\n).eval()\n\ntokenizer = AutoTokenizer.from_pretrained(\n    \"ZhipuAI/chatglm3-6b\",\n    trust_remote_code=True\n)\n\nresponse, history = model.chat(tokenizer, \"你好\", history=[])\nprint(response)",
+    "chineseDescription": "ChatGLM 是智谱 AI 和清华大学共同研发的大语言模型系列，包括 ChatGLM2、ChatGLM3 等版本，支持中英双语对话。"
+  },
+  {
+    "id": "cogview",
+    "name": "CogView",
+    "company": "智谱 AI / 清华大学",
+    "companyLogo": "https://raw.githubusercontent.com/THUDM/ChatGLM3/main/resources/logo.png",
+    "description": "智谱 AI 图像生成模型",
+    "github": "https://github.com/THUDM/CogView2",
+    "stars": 3200,
+    "language": "Python",
+    "tags": ["图像生成", "AIGC", "文生图"],
+    "category": "ai-multimodal",
+    "install": {
+      "pip": "pip install modelscope"
+    },
+    "usage": "from modelscope.pipelines import pipeline\nfrom modelscope.utils.constant import Tasks\n\ntext_to_image = pipeline(\n    Tasks.text_to_image_synthesis,\n    model=\"ZhipuAI/cogview2\",\n    model_revision=\"v1.0.0\"\n)\n\nprompt = \"一只可爱的柯基犬在草地上玩耍\"\noutput = text_to_image(prompt)\nimage = output['output_imgs'][0]\nimage.save(\"corgi.png\")",
+    "chineseDescription": "CogView 是智谱 AI 推出的图像生成模型，可以根据文本描述生成高质量图片，支持多种风格和场景。"
+  },
+  {
+    "id": "ernie-bot",
+    "name": "文心一言 ERNIE Bot",
+    "company": "百度",
+    "companyLogo": "https://echarts.apache.org/images/echarts-logo.png",
+    "description": "百度文心一言大模型 API",
+    "github": "https://github.com/PaddlePaddle/ERNIE",
+    "stars": 8700,
+    "language": "Python",
+    "tags": ["大模型", "LLM", "ERNIE"],
+    "category": "ai-model",
+    "install": {
+      "pip": "pip install qianfan"
+    },
+    "usage": "import qianfan\n\nqianfan.ChatCompletion().do(\n    messages=[{\"role\": \"user\", \"content\": \"你好！\"}],\n    model=\"ERNIE-Bot-4\"\n)\n\nprint(result[\"result\"])",
+    "chineseDescription": "文心一言是百度推出的大语言模型，基于 ERNIE 系列技术，提供强大的中文理解和生成能力。"
+  },
+  {
+    "id": "paddlepaddle",
+    "name": "PaddlePaddle",
+    "company": "百度",
+    "companyLogo": "https://echarts.apache.org/images/echarts-logo.png",
+    "description": "百度深度学习框架",
+    "github": "https://github.com/PaddlePaddle/Paddle",
+    "stars": 23000,
+    "language": "C++",
+    "tags": ["深度学习框架", "百度", "Paddle"],
+    "category": "ai-framework",
+    "install": {
+      "pip": "pip install paddlepaddle"
+    },
+    "usage": "import paddle\nimport paddle.nn as nn\n\nclass SimpleNet(nn.Layer):\n    def __init__(self):\n        super().__init__()\n        self.fc = nn.Linear(784, 10)\n    \n    def forward(self, x):\n        return self.fc(x)\n\nmodel = SimpleNet()\nx = paddle.randn([32, 784])\ny = model(x)\nprint(y.shape)",
+    "chineseDescription": "PaddlePaddle 是百度开源的深度学习框架，提供丰富的模型库和工具，支持计算机视觉、自然语言处理、推荐系统等多种任务。"
+  },
+  {
+    "id": "paddlenlp",
+    "name": "PaddleNLP",
+    "company": "百度",
+    "companyLogo": "https://echarts.apache.org/images/echarts-logo.png",
+    "description": "百度 NLP 工具库",
+    "github": "https://github.com/PaddlePaddle/PaddleNLP",
+    "stars": 12000,
+    "language": "Python",
+    "tags": ["NLP", "自然语言处理", "Paddle"],
+    "category": "ai-nlp",
+    "install": {
+      "pip": "pip install paddlenlp"
+    },
+    "usage": "from paddlenlp.transformers import AutoTokenizer, AutoModel\nfrom paddlenlp import Taskflow\n\n# 分词\ntokenizer = AutoTokenizer.from_pretrained(\"ernie-3.0-medium-zh\")\nmodel = AutoModel.from_pretrained(\"ernie-3.0-medium-zh\")\n\n# 情感分析\nsentiment = Taskflow(\"sentiment_analysis\")\nresult = sentiment(\"这个产品真的太棒了！\")\nprint(result)",
+    "chineseDescription": "PaddleNLP 是百度开源的 NLP 工具库，提供丰富的预训练模型和 NLP 任务支持，包括文本分类、命名实体识别、情感分析等。"
+  },
+  {
+    "id": "hunyuan",
+    "name": "混元大模型",
+    "company": "腾讯",
+    "companyLogo": "https://img12.360buyimg.com/imagetools/jfs/t1/208024/33/25335/101057/647d2253F801c8370/8c29978d40880863.png",
+    "description": "腾讯混元大模型",
+    "github": "https://github.com/Tencent/HunyuanAide",
+    "stars": 2100,
+    "language": "Python",
+    "tags": ["大模型", "LLM", "腾讯"],
+    "category": "ai-model",
+    "install": {
+      "pip": "pip install tencentcloud-sdk-python"
+    },
+    "usage": "import tencentcloud.common\nfrom tencentcloud.hunyuan.v20230901 import hunyuan_client, models\n\nclient = hunyuan_client.HunyuanClient(\n    cred, \"ap-guangzhou\"\n)\n\nreq = models.ChatCompletionsRequest()\nreq.Messages = [{\"Role\": \"user\", \"Content\": \"你好！\"}]\nresp = client.ChatCompletions(req)\nprint(resp.Choices[0].Message.Content)",
+    "chineseDescription": "混元是腾讯推出的大语言模型，提供强大的中文理解和生成能力，支持多轮对话、代码生成、文档分析等功能。"
+  },
+  {
+    "id": "lightllm",
+    "name": "LightLLM",
+    "company": "腾讯",
+    "companyLogo": "https://img12.360buyimg.com/imagetools/jfs/t1/208024/33/25335/101057/647d2253F801c8370/8c29978d40880863.png",
+    "description": "腾讯高性能 LLM 推理框架",
+    "github": "https://github.com/ModelTC/lightllm",
+    "stars": 3800,
+    "language": "Python",
+    "tags": ["推理框架", "LLM", "高性能"],
+    "category": "ai-infra",
+    "install": {
+      "pip": "pip install lightllm"
+    },
+    "usage": "from lightllm import LLM\n\nmodel = LLM(\"/path/to/model\")\n\nprompts = [\"Hello, my name is\", \"What's the weather like?\"]\noutputs = model.generate(prompts)\n\nfor prompt, output in zip(prompts, outputs):\n    print(f\"{prompt}{output}\")",
+    "chineseDescription": "LightLLM 是腾讯开源的高性能 LLM 推理框架，支持多种模型，具有低延迟、高吞吐量的特点。"
+  },
+  {
+    "id": "tencent-ml-images",
+    "name": "name",
+    "name": "腾讯优图",
+    "company": "腾讯",
+    "companyLogo": "https://img12.360buyimg.com/imagetools/jfs/t1/208024/33/25335/101057/647d2253F801c8370/8c29978d40880863.png",
+    "description": "腾讯计算机视觉工具库",
+    "github": "https://github.com/Tencent/tencent-ml-images",
+    "stars": 4000,
+    "language": "C++",
+    "tags": ["计算机视觉", "图像处理", "腾讯"],
+    "category": "ai-cv",
+    "install": {
+      "pip": "pip install tencent-ml-images"
+    },
+    "usage": "import tencent_ml_images as tmi\n\n# 人脸检测\nface_detector = tmi.FaceDetector()\nfaces = face_detector.detect(\"image.jpg\")\n\n# 人脸识别\nface_recognizer = tmi.FaceRecognizer()\nfeatures = face_recognizer.extract_features(\"image.jpg\")\n\nprint(f\"检测到 {len(faces)} 张人脸\")",
+    "chineseDescription": "腾讯优图是腾讯开源的计算机视觉工具库，提供人脸检测、人脸识别、物体检测、OCR 等多种视觉能力。"
+  },
+  {
+    "id": "feishu-cli",
+    "name": "飞书 CLI",
+    "company": "字节跳动",
+    "companyLogo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkul/1656335419611-4c319630-0582-4a9d-ba3f-55874735e16d.png",
+    "description": "飞书命令行工具",
+    "github": "https://github.com/larksuite/lark-cli",
+    "stars": 300,
+    "language": "Go",
+    "tags": ["飞书", "CLI", "效率工具"],
+    "category": "tools",
+    "install": {
+      "brew": "brew install lark-cli",
+      "npm": "npm install -g @larksuite/cli"
+    },
+    "usage": "# 登录飞书\nlark login\n\n# 发送消息\nlark message send \"大家好！\" --chat \"群名称\"\n\n# 查看日程\nlark calendar list\n\n# 创建任务\nlark task create \"完成项目报告\" --due \"2024-01-15\"",
+    "chineseDescription": "飞书 CLI 是字节跳动推出的命令行工具，让你可以在终端中使用飞书的各种功能，包括发送消息、查看日程、管理任务等。"
+  },
+  {
+    "id": "lark-bot-sdk",
+    "name": "飞书机器人 SDK",
+    "company": "字节跳动",
+    "companyLogo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkul/1656335419611-4c319630-0582-4a9d-ba3f-55874735e16d.png",
+    "description": "飞书机器人开发 SDK",
+    "github": "https://github.com/larksuite/oapi-sdk-python",
+    "stars": 1200,
+    "language": "Python",
+    "tags": ["飞书", "机器人", "SDK"],
+    "category": "tools",
+    "install": {
+      "pip": "pip install lark-oapi-sdk"
+    },
+    "usage": "from lark_oapi import Client, CORE\nfrom lark_oapi.api.im.v1 import *\n\nclient = Client.builder()\n    .app_id(\"your-app-id\")\n    .app_secret(\"your-app-secret\")\n    .build()\n\nreq = CreateMessageRequest.builder()\n    .receive_id_type(\"open_id\")\n    .receive_id(\"user-open-id\")\n    .msg_type(\"text\")\n    .content('{\"text\":\"Hello!\"}')\n    .build()\n\nresp = client.im.v1.message.create(req)\nprint(resp.data)",
+    "chineseDescription": "飞书机器人 SDK 让你可以方便地开发飞书机器人，支持发送消息、接收消息回调、卡片交互等功能。"
+  },
+  {
+    "id": "vue",
+    "name": "Vue.js",
+    "company": "尤雨溪",
+    "companyLogo": "https://vuejs.org/images/logo.png",
+    "description": "渐进式 JavaScript 框架",
+    "github": "https://github.com/vuejs/core",
+    "stars": 45000,
+    "language": "TypeScript",
+    "tags": ["前端框架", "Vue", "JavaScript"],
+    "category": "frontend",
+    "install": {
+      "npm": "npm install vue",
+      "yarn": "yarn add vue",
+      "pnpm": "pnpm add vue"
+    },
+    "usage": "<script setup>\nimport { ref } from 'vue'\n\nconst count = ref(0)\n</script>\n\n<template>\n  <div>\n    <button @click=\"count++\">\n      点击了 {{ count }} 次\n    </button>\n  </div>\n</template>",
+    "chineseDescription": "Vue.js 是由尤雨溪（中国开发者）创建的渐进式 JavaScript 框架，以其简洁的 API 和优秀的文档著称，是全球最流行的前端框架之一。"
+  },
+  {
+    "id": "element-plus",
+    "name": "Element Plus",
+    "company": "饿了么",
+    "companyLogo": "https://element-plus.org/images/element-plus-logo.svg",
+    "description": "Vue 3 组件库",
+    "github": "https://github.com/element-plus/element-plus",
+    "stars": 24000,
+    "language": "TypeScript",
+    "tags": ["UI组件库", "Vue 3"],
+    "category": "frontend",
+    "install": {
+      "npm": "npm install element-plus",
+      "yarn": "yarn add element-plus",
+      "pnpm": "pnpm add element-plus"
+    },
+    "usage": "import { createApp } from 'vue'\nimport ElementPlus from 'element-plus'\nimport 'element-plus/dist/index.css'\nimport App from './App.vue'\n\nconst app = createApp(App)\napp.use(ElementPlus)\napp.mount('#app')",
+    "chineseDescription": "Element Plus 是饿了么推出的 Vue 3 组件库，是 Element UI 的升级版本，提供了丰富的中后台组件。"
+  },
+  {
     "id": "ant-design",
     "name": "Ant Design",
     "company": "阿里巴巴",
@@ -9,12 +339,13 @@
     "stars": 92000,
     "language": "TypeScript",
     "tags": ["UI组件库", "React", "设计系统"],
+    "category": "frontend",
     "install": {
       "npm": "npm install antd",
       "yarn": "yarn add antd",
       "pnpm": "pnpm add antd"
     },
-    "usage": "import { Button, DatePicker } from 'antd';\n\nfunction App() {\n  return (\n    <div>\n      <Button type=\"primary\">按钮</Button>\n      <DatePicker />\n    </div>\n  );\n}",
+    "usage": "import { Button, DatePicker } from 'antd'\n\nfunction App() {\n  return (\n    <div>\n      <Button type=\"primary\">按钮</Button>\n      <DatePicker />\n    </div>\n  )\n}",
     "chineseDescription": "Ant Design 是阿里巴巴推出的企业级 UI 设计语言，提供了丰富的 React 组件，广泛应用于中后台管理系统。"
   },
   {
@@ -27,31 +358,33 @@
     "stars": 23000,
     "language": "TypeScript",
     "tags": ["移动端", "UI组件库", "Vue"],
+    "category": "frontend",
     "install": {
       "npm": "npm install vant",
       "yarn": "yarn add vant",
       "pnpm": "pnpm add vant"
     },
-    "usage": "import { Button, Cell } from 'vant';\nimport 'vant/lib/index.css';\n\nfunction App() {\n  return (\n    <div>\n      <Button type=\"primary\">按钮</Button>\n      <Cell title=\"单元格\" />\n    </div>\n  );\n}",
+    "usage": "import { Button, Cell } from 'vant'\nimport 'vant/lib/index.css'\n\nfunction App() {\n  return (\n    <div>\n      <Button type=\"primary\">按钮</Button>\n      <Cell title=\"单元格\" />\n    </div>\n  )\n}",
     "chineseDescription": "Vant 是字节跳动推出的轻量级移动端组件库，提供了 60+ 高质量组件，非常适合 H5 和小程序开发。"
   },
   {
-    "id": "element-plus",
-    "name": "Element Plus",
-    "company": "饿了么",
-    "companyLogo": "https://element-plus.org/images/element-plus-logo.svg",
-    "description": "Vue 3 组件库",
-    "github": "https://github.com/element-plus/element-plus",
-    "stars": 24000,
+    "id": "arco-design",
+    "name": "Arco Design",
+    "company": "字节跳动",
+    "companyLogo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkul/1656335419611-4c319630-0582-4a9d-ba3f-55874735e16d.png",
+    "description": "字节跳动出品的企业级设计系统",
+    "github": "https://github.com/arco-design/arco-design",
+    "stars": 5000,
     "language": "TypeScript",
-    "tags": ["UI组件库", "Vue 3"],
+    "tags": ["UI组件库", "React", "Vue"],
+    "category": "frontend",
     "install": {
-      "npm": "npm install element-plus",
-      "yarn": "yarn add element-plus",
-      "pnpm": "pnpm add element-plus"
+      "npm": "npm install @arco-design/web-react",
+      "yarn": "yarn add @arco-design/web-react",
+      "pnpm": "pnpm add @arco-design/web-react"
     },
-    "usage": "import { createApp } from 'vue';\nimport ElementPlus from 'element-plus';\nimport 'element-plus/dist/index.css';\nimport App from './App.vue';\n\nconst app = createApp(App);\napp.use(ElementPlus);\napp.mount('#app');",
-    "chineseDescription": "Element Plus 是饿了么推出的 Vue 3 组件库，是 Element UI 的升级版本，提供了丰富的中后台组件。"
+    "usage": "import { Button, Message } from '@arco-design/web-react'\nimport '@arco-design/web-react/dist/css/arco.css'\n\nfunction App() {\n  return (\n    <div>\n      <Button type=\"primary\" onClick={() => Message.success('成功!')}>\n        按钮\n      </Button>\n    </div>\n  )\n}",
+    "chineseDescription": "Arco Design 是字节跳动出品的企业级设计系统，提供了 React 和 Vue 两个版本，设计风格简洁现代，适合中后台系统。"
   },
   {
     "id": "echarts",
@@ -63,13 +396,33 @@
     "stars": 59000,
     "language": "TypeScript",
     "tags": ["数据可视化", "图表"],
+    "category": "frontend",
     "install": {
       "npm": "npm install echarts",
       "yarn": "yarn add echarts",
       "pnpm": "pnpm add echarts"
     },
-    "usage": "import * as echarts from 'echarts';\n\nconst chartDom = document.getElementById('chart');\nconst myChart = echarts.init(chartDom);\n\nconst option = {\n  title: { text: 'ECharts 示例' },\n  xAxis: { data: ['Mon', 'Tue', 'Wed'] },\n  yAxis: {},\n  series: [{ type: 'bar', data: [5, 20, 36] }]\n};\n\nmyChart.setOption(option);",
+    "usage": "import * as echarts from 'echarts'\n\nconst chartDom = document.getElementById('chart')\nconst myChart = echarts.init(chartDom)\n\nconst option = {\n  title: { text: 'ECharts 示例' },\n  xAxis: { data: ['Mon', 'Tue', 'Wed'] },\n  yAxis: {},\n  series: [{ type: 'bar', data: [5, 20, 36] }]\n}\n\nmyChart.setOption(option)",
     "chineseDescription": "ECharts 是百度开源的强大数据可视化库，提供了 20+ 种图表类型，支持千万级数据渲染，是国内最流行的图表库之一。"
+  },
+  {
+    "id": "amis",
+    "name": "amis",
+    "company": "百度",
+    "companyLogo": "https://aisuda.bcebos.com/amis/zh-CN/images/logo.png",
+    "description": "低代码前端框架，用 JSON 配置生成页面",
+    "github": "https://github.com/baidu/amis",
+    "stars": 17000,
+    "language": "TypeScript",
+    "tags": ["低代码", "前端框架"],
+    "category": "frontend",
+    "install": {
+      "npm": "npm install amis",
+      "yarn": "yarn add amis",
+      "pnpm": "pnpm add amis"
+    },
+    "usage": "import { render } from 'amis'\n\nconst schema = {\n  type: 'page',\n  title: 'amis 示例',\n  body: [\n    { type: 'tpl', tpl: 'Hello World!' }\n  ]\n}\n\nrender(schema, document.getElementById('root'))",
+    "chineseDescription": "amis 是百度推出的低代码前端框架，通过 JSON 配置就能生成完整的管理后台页面，极大提升开发效率。"
   },
   {
     "id": "taro",
@@ -81,6 +434,7 @@
     "stars": 35000,
     "language": "TypeScript",
     "tags": ["跨端", "小程序", "React"],
+    "category": "frontend",
     "install": {
       "npm": "npm install -g @tarojs/cli",
       "yarn": "yarn global add @tarojs/cli"
@@ -98,47 +452,12 @@
     "stars": 21000,
     "language": "JavaScript",
     "tags": ["小程序", "Vue"],
+    "category": "frontend",
     "install": {
       "npm": "npm install -g @vue/cli",
       "yarn": "yarn global add @vue/cli"
     },
     "usage": "# 创建项目\nvue init mpvue/mpvue-quickstart my-project\n\n# 进入项目\ncd my-project\n\n# 安装依赖\nnpm install\n\n# 开发\nnpm run dev",
     "chineseDescription": "mpvue 是美团推出的小程序开发框架，允许使用 Vue.js 语法开发微信小程序，让 Web 开发者快速上手小程序开发。"
-  },
-  {
-    "id": "arco-design",
-    "name": "Arco Design",
-    "company": "字节跳动",
-    "companyLogo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkul/1656335419611-4c319630-0582-4a9d-ba3f-55874735e16d.png",
-    "description": "字节跳动出品的企业级设计系统",
-    "github": "https://github.com/arco-design/arco-design",
-    "stars": 5000,
-    "language": "TypeScript",
-    "tags": ["UI组件库", "React", "Vue"],
-    "install": {
-      "npm": "npm install @arco-design/web-react",
-      "yarn": "yarn add @arco-design/web-react",
-      "pnpm": "pnpm add @arco-design/web-react"
-    },
-    "usage": "import { Button, Message } from '@arco-design/web-react';\nimport '@arco-design/web-react/dist/css/arco.css';\n\nfunction App() {\n  return (\n    <div>\n      <Button type=\"primary\" onClick={() => Message.success('成功!')}>\n        按钮\n      </Button>\n    </div>\n  );\n}",
-    "chineseDescription": "Arco Design 是字节跳动出品的企业级设计系统，提供了 React 和 Vue 两个版本，设计风格简洁现代，适合中后台系统。"
-  },
-  {
-    "id": "amis",
-    "name": "amis",
-    "company": "百度",
-    "companyLogo": "https://aisuda.bcebos.com/amis/zh-CN/images/logo.png",
-    "description": "低代码前端框架，用 JSON 配置生成页面",
-    "github": "https://github.com/baidu/amis",
-    "stars": 17000,
-    "language": "TypeScript",
-    "tags": ["低代码", "前端框架"],
-    "install": {
-      "npm": "npm install amis",
-      "yarn": "yarn add amis",
-      "pnpm": "pnpm add amis"
-    },
-    "usage": "import { render } from 'amis';\n\nconst schema = {\n  type: 'page',\n  title: 'amis 示例',\n  body: [\n    { type: 'tpl', tpl: 'Hello World!' }\n  ]\n};\n\nrender(schema, document.getElementById('root'));",
-    "chineseDescription": "amis 是百度推出的低代码前端框架，通过 JSON 配置就能生成完整的管理后台页面，极大提升开发效率。"
   }
 ]
