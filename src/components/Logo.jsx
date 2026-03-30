@@ -1,5 +1,5 @@
-// Logo 组件 - 现代简洁设计
-// 设计概念: 代码花括号 + 中国印章元素的结合
+// Logo 组件 - AI Agent Harness 主题设计
+// 设计概念: 六边形蜂巢 + 连接节点 + 代码括号
 
 export function Logo({ className = "", size = 40 }) {
   return (
@@ -11,43 +11,32 @@ export function Logo({ className = "", size = 40 }) {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      {/* 外框 - 圆角矩形 */}
-      <rect
-        x="2"
-        y="2"
-        width="36"
-        height="36"
-        rx="8"
+      {/* 外框 - 六边形蜂巢 */}
+      <path
+        d="M20 4L34 12V28L20 36L6 28V12L20 4Z"
         fill="currentColor"
         fillOpacity="0.1"
         stroke="currentColor"
         strokeWidth="2"
-      />
-      {/* 左花括号 */}
-      <path
-        d="M14 12C12 14 12 16 12 18C12 20 11 20 10 20C11 20 12 20 12 22C12 24 12 26 14 28"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
         strokeLinejoin="round"
-        fill="none"
       />
-      {/* 右花括号 */}
-      <path
-        d="M26 12C28 14 28 16 28 18C28 20 29 20 30 20C29 20 28 20 28 22C28 24 28 26 26 28"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-      {/* 中间点 - 代表"中国" */}
-      <circle cx="20" cy="20" r="2.5" fill="currentColor" />
+      {/* 中心连接节点 */}
+      <circle cx="20" cy="20" r="5" fill="currentColor" />
+      {/* 连接线 - 左上 */}
+      <line x1="20" y1="15" x2="12" y2="10" stroke="currentColor" strokeWidth="1.5" />
+      {/* 连接线 - 右上 */}
+      <line x1="20" y1="15" x2="28" y2="10" stroke="currentColor" strokeWidth="1.5" />
+      {/* 连接线 - 下方 */}
+      <line x1="20" y1="25" x2="20" y2="32" stroke="currentColor" strokeWidth="1.5" />
+      {/* 小节点 */}
+      <circle cx="12" cy="10" r="2" fill="currentColor" />
+      <circle cx="28" cy="10" r="2" fill="currentColor" />
+      <circle cx="20" cy="32" r="2" fill="currentColor" />
     </svg>
   );
 }
 
-// 备选设计 2: 简约的代码符号
+// 备选设计 2: 简约代码括号 + Agent 节点
 export function LogoAlt({ className = "", size = 40 }) {
   return (
     <svg
@@ -58,34 +47,31 @@ export function LogoAlt({ className = "", size = 40 }) {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      {/* 背景 */}
-      <rect width="40" height="40" rx="10" fill="currentColor" />
-      {/* 代码符号 </> */}
+      {/* 背景圆 */}
+      <circle cx="20" cy="20" r="18" fill="currentColor" fillOpacity="0.1" stroke="currentColor" strokeWidth="2" />
+      {/* 左括号 */}
       <path
-        d="M14 20L10 24L14 28"
-        stroke="white"
+        d="M14 12C11 14 11 17 11 20C11 23 11 26 14 28"
+        stroke="currentColor"
         strokeWidth="2.5"
         strokeLinecap="round"
-        strokeLinejoin="round"
+        fill="none"
       />
+      {/* 右括号 */}
       <path
-        d="M26 20L30 24L26 28"
-        stroke="white"
+        d="M26 12C29 14 29 17 29 20C29 23 29 26 26 28"
+        stroke="currentColor"
         strokeWidth="2.5"
         strokeLinecap="round"
-        strokeLinejoin="round"
+        fill="none"
       />
-      <path
-        d="M22 14L18 30"
-        stroke="white"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
+      {/* 中心 Agent 节点 */}
+      <circle cx="20" cy="20" r="3" fill="currentColor" />
     </svg>
   );
 }
 
-// 备选设计 3: 字母组合 CO (China Open)
+// 备选设计 3: 字母 AH (Awesome Harmless)
 export function LogoText({ className = "", size = 40 }) {
   return (
     <svg
@@ -96,41 +82,18 @@ export function LogoText({ className = "", size = 40 }) {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <rect width="40" height="40" rx="10" fill="currentColor" />
+      <rect width="40" height="40" rx="8" fill="currentColor" />
       <text
         x="20"
         y="26"
         textAnchor="middle"
         fill="white"
-        fontSize="16"
-        fontWeight="600"
-        fontFamily="var(--font-serif)"
+        fontSize="14"
+        fontWeight="700"
+        fontFamily="system-ui, sans-serif"
       >
-        开
+        AH
       </text>
-    </svg>
-  );
-}
-
-// 备选设计 4: 星形 + 代码元素
-export function LogoStar({ className = "", size = 40 }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <rect width="40" height="40" rx="10" fill="currentColor" fillOpacity="0.1" />
-      {/* 六角星形 */}
-      <path
-        d="M20 8L22.5 15H30L24 19.5L26.5 27L20 22.5L13.5 27L16 19.5L10 15H17.5L20 8Z"
-        fill="currentColor"
-      />
-      {/* 代码暗示 - 底部横线 */}
-      <rect x="10" y="32" width="20" height="2" rx="1" fill="currentColor" fillOpacity="0.5" />
     </svg>
   );
 }

@@ -1,5 +1,45 @@
 [
   {
+    "id": "superpowers",
+    "name": "Superpowers",
+    "company": "obra",
+    "country": "美国",
+    "description": "An agentic skills framework & software development methodology that works.",
+    "chineseDescription": "Superpowers 是一套完整的编码 Agent 技能框架和软件开发方法论。它基于可组合的\"技能\"集合，帮助 AI Agent 在编码时不仅仅是直接写代码，而是先理解需求、制定规范、设计架构，然后采用子代理驱动开发模式执行。强调 TDD（测试驱动开发）、YAGNI（你不会需要它）和 DRY（不要重复自己）原则，让 Claude 等 Agent 能够自主工作数小时而不偏离计划。支持 Claude Code、Cursor、Codex、OpenCode、Gemini CLI 等多个平台。",
+    "github": "https://github.com/obra/superpowers",
+    "category": "ai-agent",
+    "tags": [
+      "agent-skills",
+      "coding-agent",
+      "tdd",
+      "software-development",
+      "workflow",
+      "claude-code",
+      "cursor",
+      "subagent-driven"
+    ],
+    "useCases": [
+      "AI 编码助手增强",
+      "测试驱动开发",
+      "软件架构设计",
+      "子代理任务编排",
+      "代码审查自动化"
+    ],
+    "createdAt": "2025-10-09",
+    "updatedAt": "2026-03-30",
+    "installGuide": {
+      "claudeCode": "通过官方插件市场: /plugin install superpowers@claude-plugins-official",
+      "cursor": "/add-plugin superpowers 或在插件市场搜索",
+      "codex": "Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.codex/INSTALL.md",
+      "openCode": "Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md",
+      "gemini": "gemini extensions install https://github.com/obra/superpowers"
+    },
+    "agentDeployPrompt": "请帮我安装并配置 Superpowers 框架。\n\n项目信息：\n- 名称: Superpowers\n- 作者: obra\n- 分类: ai-agent\n- 支持平台: Claude Code、Cursor、Codex、OpenCode、Gemini CLI\n\n请根据你当前的平台选择合适的安装方式：\n1. Claude Code: /plugin install superpowers@claude-plugins-official\n2. Cursor: /add-plugin superpowers\n3. Codex/OpenCode: 从 README 获取安装指令\n4. Gemini CLI: gemini extensions install https://github.com/obra/superpowers\n\n安装完成后，尝试用\"帮我规划这个功能\"或\"我们来调试这个问题\"测试技能是否自动触发。",
+    "stars": 125109,
+    "language": "Shell",
+    "companyLogo": "https://avatars.githubusercontent.com/u/45416?v=4"
+  },
+  {
     "id": "autogpt",
     "name": "AutoGPT",
     "company": "AutoGPT",

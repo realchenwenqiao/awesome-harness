@@ -65,8 +65,8 @@ function Home() {
       countryStats[country] = (countryStats[country] || 0) + 1;
     });
 
-    // Top 5 项目
-    const topProjects = [...projects].sort((a, b) => (b.stars || 0) - (a.stars || 0)).slice(0, 5);
+    // Top 10 项目
+    const topProjects = [...projects].sort((a, b) => (b.stars || 0) - (a.stars || 0)).slice(0, 10);
 
     return {
       totalProjects: projects.length,
@@ -135,7 +135,7 @@ function Home() {
                 <Logo className="text-[var(--accent-color)]" size={36} />
                 <div>
                   <h1 className="font-serif text-xl font-semibold tracking-tight">
-                    AI Agent Hub
+                    Awesome Harmless
                   </h1>
                 </div>
               </div>
@@ -176,14 +176,15 @@ function Home() {
                 </div>
 
                 <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] tracking-tight">
-                  汇聚世界顶级科技企业的
-                  <span className="text-[var(--accent-color)]"> AI Agent Harness</span>
+                  汇聚顶级企业以及最佳实践的
+                  <span className="text-[var(--accent-color)]"> AI Agent, Harmless</span>
                   开源生态
                 </h2>
 
                 <p className="text-[var(--text-secondary)] text-lg max-w-lg leading-relaxed">
                   聚焦 AI Agent 生态和 Harness 范式的可直接使用工具，
                   收录 OpenAI、Anthropic、Google、阿里巴巴、腾讯、百度等全球 30+ 科技企业的开源项目。
+                  汇聚顶级开发者的最佳实践。
                 </p>
 
                 {/* Quick Stats */}
@@ -207,7 +208,7 @@ function Home() {
               <div className="card p-6">
                 <h3 className="font-serif text-xl mb-6 flex items-center gap-2">
                   <span className="text-[var(--accent-color)]">◆</span>
-                  Star 数 Top 5 项目
+                  Star 数 Top 10 项目
                 </h3>
 
                 <div className="space-y-3">
@@ -337,23 +338,15 @@ function Home() {
 
           {/* Search & Filter Section */}
           <section className="mb-10 space-y-8">
-            {/* Search - Fixed icon overlap with proper padding */}
+            {/* Search - Fixed: removed icon from input, using placeholder instead */}
             <div className="relative max-w-xl mx-auto">
               <input
                 type="text"
-                placeholder="搜索项目名称、技术栈、应用场景..."
+                placeholder="🔍 搜索项目名称、技术栈、应用场景..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="input w-full pl-12 pr-4 py-3"
+                className="input w-full px-4 py-3"
               />
-              <svg
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--text-muted)] pointer-events-none"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
@@ -385,8 +378,8 @@ function Home() {
               {/* Company Filter */}
               <div className="space-y-3">
                 <h4 className="text-sm font-medium text-[var(--text-secondary)]">按企业筛选</h4>
-                <div className="flex flex-wrap gap-2">
-                  {companies.slice(0, 20).map(company => (
+                <div className="flex flex-wrap gap-2 items-center">
+                  {companies.slice(0, 15).map(company => (
                     <button
                       key={company}
                       onClick={() => setSelectedCompany(company)}
@@ -395,9 +388,33 @@ function Home() {
                       {company === 'all' ? '全部企业' : company}
                     </button>
                   ))}
-                  {companies.length > 20 && (
-                    <span className="text-sm text-[var(--text-muted)] px-2">
-                      +{companies.length - 21} 更多
+                  {companies.length > 15 && (
+                    <button
+                      onClick={() => alert(`更多企业：${companies.slice(15).join(', ')}`)}
+                      className="text-sm text-[var(--accent-color)] hover:underline px-2 py-1"
+                    >
+                      +{companies.length - 16} 更多
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Use Case Filter - Added back */}
+              <div className="space-y-3">
+                <h4 className="text-sm font-medium text-[var(--text-secondary)]">按应用场景</h4>
+                <div className="flex flex-wrap gap-2">
+                  {useCases.slice(0, 12).map(useCase => (
+                    <button
+                      key={useCase}
+                      onClick={() => setSelectedUseCase(useCase)}
+                      className={`filter-btn ${selectedUseCase === useCase ? 'active' : ''}`}
+                    >
+                      {useCase === 'all' ? '全部场景' : useCase}
+                    </button>
+                  ))}
+                  {useCases.length > 12 && (
+                    <span className="text-sm text-[var(--text-muted)] px-2 py-1">
+                      +{useCases.length - 13} 更多
                     </span>
                   )}
                 </div>
@@ -454,28 +471,14 @@ function Home() {
                   className="card group p-5 opacity-0 animate-fade-in"
                   style={{ animationDelay: `${index * 0.05}s`, animationFillMode: 'forwards' }}
                 >
-                  {/* Header: Logo & Company */}
+                  {/* Header: Company & Stars - Removed avatar */}
                   <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      {project.companyLogo ? (
-                        <img
-                          src={project.companyLogo}
-                          alt={project.company}
-                          className="w-10 h-10 rounded-lg object-contain bg-[var(--bg-tertiary)]"
-                        />
-                      ) : (
-                        <div className="w-10 h-10 rounded-lg bg-[var(--bg-tertiary)] flex items-center justify-center
-                                      text-sm font-semibold text-[var(--text-muted)]">
-                          {project.company?.charAt(0)}
-                        </div>
-                      )}
-                      <div>
-                        <h3 className="font-medium text-[var(--text-primary)] group-hover:text-[var(--accent-color)]
-                                     transition-colors">
-                          {project.name}
-                        </h3>
-                        <p className="text-xs text-[var(--text-muted)]">{project.company}</p>
-                      </div>
+                    <div>
+                      <h3 className="font-medium text-[var(--text-primary)] group-hover:text-[var(--accent-color)]
+                                   transition-colors">
+                        {project.name}
+                      </h3>
+                      <p className="text-xs text-[var(--text-muted)]">{project.company}</p>
                     </div>
                     <div className="flex items-center gap-1 text-amber-500">
                       <span>★</span>
