@@ -1,0 +1,50 @@
+GNU AFFERO GENERAL PUBLIC LICENSE
+Version 3, 19 November 2007
+
+Copyright (C) 2026  awesome-cnbigcompany-hub contributors
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+---
+
+## 中文说明
+
+本项目采用 **AGPL-3.0** 许可证，核心要求：
+
+### 你可以
+- ✅ 自由使用、复制、分发本项目
+- ✅ 修改源码并用于个人或商业项目
+- ✅ 在项目中引用本项目的链接
+
+### 你必须
+- 📌 **保持开源**: 任何使用本项目的衍生作品（包括网络服务）必须开源
+- 📌 **相同许可**: 衍生作品必须使用 AGPL-3.0 或兼容许可证
+- 📌 **声明变更**: 修改源码时必须说明变更内容
+- 📌 **保留版权声明**: 保留原作者的版权声明
+
+### 禁止
+- ❌ 闭源商业使用（包括但不限于 SaaS 服务）
+- ❌ 去除版权声明
+- ❌ 使用不同许可证分发
+
+### 为什么选 AGPL？
+
+AGPL 比 GPL 更严格，特别适用于网络服务：
+- 即使你只是搭建网站供人使用，也必须开源
+- 确保本项目及其衍生作品永远保持开源状态
+- 防止有人 fork 后闭源商业化
+
+### 联系我们
+
+如有许可证相关问题，请联系：business.joe.chen@gmail.com
