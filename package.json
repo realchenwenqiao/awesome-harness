@@ -1,9 +1,9 @@
 {
-  "name": "awasomes-harness",
+  "name": "awesome-harness",
   "private": true,
   "version": "2.0.0",
   "type": "module",
-  "homepage": "https://realchenwenqiao.github.io/awasomes-harness",
+  "homepage": "https://realchenwenqiao.github.io/awesome-harness",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -1,18 +1,18 @@
-# awasomes-harness 🤖
+# awesome-harness 🤖
 
-[![Website](https://img.shields.io/badge/website-online-green)](https://realchenwenqiao.github.io/awasomes-harness/)
+[![Website](https://img.shields.io/badge/website-online-green)](https://realchenwenqiao.github.io/awesome-harness/)
 [![License](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
 [![Projects](https://img.shields.io/badge/projects-312-orange)](src/data/projects.json)
 
 > 汇聚世界顶级科技企业 AI Agent Harness 开源生态的精选平台
 
-**在线访问**: [https://realchenwenqiao.github.io/awasomes-harness/](https://realchenwenqiao.github.io/awasomes-harness/)
+**在线访问**: [https://realchenwenqiao.github.io/awesome-harness/](https://realchenwenqiao.github.io/awesome-harness/)
 
 ---
 
 ## 🎯 项目定位
 
-**awasomes-harness** 是一个聚焦 AI Agent 生态和 Harness 范式的开源项目聚合平台。
+**awesome-harness** 是一个聚焦 AI Agent 生态和 Harness 范式的开源项目聚合平台。
 
 区别于传统的大模型基础设施收录，我们专注于：
 - 🤖 **AI Agent 框架** - 可直接使用的 Agent 构建工具
@@ -47,8 +47,8 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/realchenwenqiao/awasomes-harness.git
-cd awasomes-harness
+git clone https://github.com/realchenwenqiao/awesome-harness.git
+cd awesome-harness
 
 # 安装依赖
 npm install
@@ -153,7 +153,7 @@ AI 工作流编排工具，支持复杂业务流程自动化。
 ## 📁 项目结构
 
 ```
-awasomes-harness/
+awesome-harness/
 ├── docs/                      # 文档
 │   ├── PRD.md                 # 产品需求文档
 │   ├── CONTRIBUTING.md        # 贡献指南
@@ -240,7 +240,7 @@ awasomes-harness/
 示例用法：
 ```javascript
 // 获取所有项目
-const projects = await fetch('https://realchenwenqiao.github.io/awasomes-harness/src/data/projects.json').then(r => r.json());
+const projects = await fetch('https://realchenwenqiao.github.io/awesome-harness/src/data/projects.json').then(r => r.json());
 
 // 筛选 AI Agent 框架
 const agentFrameworks = projects.filter(p => p.category === 'ai-agent');
