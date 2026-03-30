@@ -1,22 +1,37 @@
-# 中国大厂开源精选 🐉
+# awasomes-harness 🤖
 
-[![Website](https://img.shields.io/badge/website-online-green)](https://joe.github.io/awesome-cnbigcompany-hub/)
+[![Website](https://img.shields.io/badge/website-online-green)](https://realchenwenqiao.github.io/awasomes-harness/)
 [![License](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
-[![Projects](https://img.shields.io/badge/projects-16-orange)](src/data/projects.json)
+[![Projects](https://img.shields.io/badge/projects-312-orange)](src/data/projects.json)
 
-> 汇聚中国互联网大厂开源 AI 项目的精选网站
+> 汇聚世界顶级科技企业 AI Agent Harness 开源生态的精选平台
 
-**在线访问**: [https://joe.github.io/awesome-cnbigcompany-hub/](https://joe.github.io/awesome-cnbigcompany-hub/)
+**在线访问**: [https://realchenwenqiao.github.io/awasomes-harness/](https://realchenwenqiao.github.io/awasomes-harness/)
+
+---
+
+## 🎯 项目定位
+
+**awasomes-harness** 是一个聚焦 AI Agent 生态和 Harness 范式的开源项目聚合平台。
+
+区别于传统的大模型基础设施收录，我们专注于：
+- 🤖 **AI Agent 框架** - 可直接使用的 Agent 构建工具
+- 🔄 **工作流编排** - Workflow、自动化流水线
+- 🛠️ **AI 工具库** - SDK、API、开发工具
+- 🔌 **集成方案** - 第三方连接、数据同步
+- 🧠 **RAG 系统** - 检索增强、知识库
+- 💾 **记忆系统** - 上下文管理、向量存储
 
 ---
 
 ## ✨ 特性
 
-- 🎯 **精选项目** - 收录阿里、腾讯、百度、字节、DeepSeek 等 9 家大厂 16+ 优质开源项目
-- 📝 **中文文档** - 每个项目都配有详细的中文介绍和应用场景
-- 🔍 **三维度筛选** - 按企业、技术类别、应用场景精准筛选
+- 🌍 **全球视野** - 收录中美欧 30+ 科技企业 312+ 开源项目
+- 🚫 **剔除大模型** - 专注可直接使用的工具（非上游基础设施）
+- 📝 **中文文档** - 每个项目配有详细的中文介绍和应用场景
+- 🔍 **多维度筛选** - 按国家/地区、企业、技术类别精准筛选
 - 🔎 **智能搜索** - 支持按项目名、描述、标签搜索
-- 🎨 **现代设计** - 衬线体 + 暖琥珀色主题，支持暗黑模式
+- 🎨 **现代设计** - 暖琥珀色主题，支持暗黑模式
 - 📊 **数据看板** - 企业开源贡献排行榜，实时统计数据
 - 🤖 **AI Agent 友好** - 结构化数据，便于 AI 读取和推荐
 - 📱 **响应式设计** - 完美适配手机、平板、电脑
@@ -32,8 +47,8 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/joe/awesome-cnbigcompany-hub.git
-cd awesome-cnbigcompany-hub
+git clone https://github.com/realchenwenqiao/awasomes-harness.git
+cd awasomes-harness
 
 # 安装依赖
 npm install
@@ -47,10 +62,98 @@ npm run build
 
 ---
 
+## 📁 项目分类目录
+
+### 🤖 AI Agent 框架
+智能体构建框架，支持多 Agent 协作、任务规划、工具调用。
+
+代表项目：
+- [nacos](https://github.com/alibaba/nacos) - 阿里巴巴 - 动态服务发现与配置管理
+- [OpenSandbox](https://github.com/alibaba/OpenSandbox) - 阿里巴巴 - AI Agent 安全沙箱运行时
+- [langchain](https://github.com/langchain-ai/langchain) - LangChain - 构建上下文感知推理应用
+
+### 🔄 工作流编排
+AI 工作流编排工具，支持复杂业务流程自动化。
+
+代表项目：
+- [spring-ai-alibaba](https://github.com/alibaba/spring-ai-alibaba) - 阿里巴巴 - Java Agentic AI 框架
+- [langgraph](https://github.com/langchain-ai/langgraph) - LangChain - 使用 LLM 构建状态化多 Agent 应用
+
+### 🧠 RAG 工具
+检索增强生成工具，构建企业知识库和智能问答系统。
+
+代表项目：
+- [EasyNLP](https://github.com/alibaba/EasyNLP) - 阿里巴巴 - 全面的 NLP 工具包
+- [llama-index](https://github.com/run-llama/llama_index) - LlamaIndex - LLM 数据框架
+
+### 🛠️ AI 工具
+开发工具、SDK、API 库，助力 AI 应用开发。
+
+代表项目：
+- [higress](https://github.com/alibaba/higress) - 阿里巴巴 - AI Native API 网关
+- [app-controller](https://github.com/alibaba/app-controller) - 阿里巴巴 - 自然语言操控应用
+- [openai-python](https://github.com/openai/openai-python) - OpenAI - OpenAI API Python 库
+
+### 🔌 集成方案
+系统集成、第三方连接、数据同步工具。
+
+代表项目：
+- [composio](https://github.com/ComposioHQ/composio) - Composio - AI Agent 工具集成平台
+
+### ⚡ 自动化
+流程自动化、RPA、任务编排工具。
+
+代表项目：
+- [easydist](https://github.com/alibaba/easydist) - 阿里巴巴 - 自动并行化系统
+- [page-agent](https://github.com/alibaba/page-agent) - 阿里巴巴 - 网页 GUI Agent
+
+### 💾 记忆系统
+上下文管理、向量存储、知识图谱工具。
+
+代表项目：
+- [chroma](https://github.com/chroma-core/chroma) - Chroma - AI 原生开源向量数据库
+
+---
+
+## 📊 数据统计
+
+| 指标 | 数值 |
+|------|------|
+| 收录项目 | 312 个 |
+| 科技企业 | 30+ 家 |
+| 国家/地区 | 4 个 |
+| 总 Stars | 500万+ |
+
+### 国家/地区分布
+
+| 排名 | 国家/地区 | 项目数 |
+|------|----------|--------|
+| 1 | 🇺🇸 美国 | 220 |
+| 2 | 🇨🇳 中国 | 87 |
+| 3 | 🇳🇱 荷兰 | 4 |
+| 4 | 🇫🇷 法国 | 1 |
+
+### 企业开源贡献排行 (Top 10)
+
+| 排名 | 企业 | 项目数 |
+|------|------|--------|
+| 1 | OpenAI | 50 |
+| 2 | LangChain | 33 |
+| 3 | Amazon | 28 |
+| 4 | 阿里巴巴 | 19 |
+| 5 | Hugging Face | 19 |
+| 6 | 智谱AI | 19 |
+| 7 | Anthropic | 16 |
+| 8 | 腾讯 | 15 |
+| 9 | 字节跳动 | 14 |
+| 10 | LlamaIndex | 13 |
+
+---
+
 ## 📁 项目结构
 
 ```
-awesome-cnbigcompany-hub/
+awasomes-harness/
 ├── docs/                      # 文档
 │   ├── PRD.md                 # 产品需求文档
 │   ├── CONTRIBUTING.md        # 贡献指南
@@ -59,9 +162,10 @@ awesome-cnbigcompany-hub/
 │   └── CHANGELOG.md           # 更新日志
 ├── src/
 │   ├── components/
-│   │   └── Logo.jsx           # Logo 组件
+│   │   ├── Logo.jsx           # Logo 组件
+│   │   └── DeployModal.jsx    # 部署弹窗
 │   ├── data/
-│   │   ├── projects.json      # 项目数据
+│   │   ├── projects.json      # 项目数据 (312+ 项目)
 │   │   └── rejected-projects.json  # 已拒绝项目
 │   ├── pages/
 │   │   ├── Home.jsx           # 首页
@@ -69,6 +173,8 @@ awesome-cnbigcompany-hub/
 │   ├── index.css              # 全局样式
 │   └── main.jsx               # 应用入口
 ├── scripts/                   # 数据抓取脚本
+│   ├── scrape-agent-projects.js   # GitHub 项目抓取
+│   └── enrich-projects.js         # 数据增强
 ├── index.html
 ├── package.json
 ├── vite.config.js
@@ -78,41 +184,16 @@ awesome-cnbigcompany-hub/
 
 ---
 
-## 📊 数据统计
-
-| 指标 | 数值 |
-|------|------|
-| 收录项目 | 16 个 |
-| 科技企业 | 9 家 |
-| 总 Stars | 38.3万+ |
-
-### 企业贡献排行
-
-| 排名 | 企业 | Stars |
-|------|------|-------|
-| 1 | DeepSeek | 10.2万 |
-| 2 | InfiniFlow | 7.7万 |
-| 3 | UC Berkeley / 开源社区 | 7.5万 |
-| 4 | 百度 | 4.4万 |
-| 5 | 字节跳动 | 2.7万 |
-
----
-
-## 📖 文档
-
-| 文档 | 说明 |
-|------|------|
-| [PRD.md](docs/PRD.md) | 产品需求文档 - 项目定位、功能需求、技术决策 |
-| [CONTRIBUTING.md](docs/CONTRIBUTING.md) | 贡献指南 - 如何提交项目、代码规范 |
-| [DATA-SCHEMA.md](docs/DATA-SCHEMA.md) | 数据规范 - projects.json 完整字段说明 |
-| [AI-AGENT.md](docs/AI-AGENT.md) | AI Agent 使用指南 - 数据结构、API 接口、示例 |
-| [CHANGELOG.md](docs/CHANGELOG.md) | 更新日志 - 版本变更记录 |
-
----
-
 ## 🤝 贡献指南
 
 欢迎提交优质开源项目！请阅读 [CONTRIBUTING.md](docs/CONTRIBUTING.md) 了解详细流程。
+
+### 提交标准
+
+1. 必须与 AI Agent / Harness 范式相关
+2. 必须有 GitHub 地址
+3. 必须是可直接上手使用的工具（非大模型基础设施）
+4. 来自知名科技企业或社区
 
 ### 快速提交
 
@@ -128,15 +209,21 @@ awesome-cnbigcompany-hub/
 
 ```json
 {
-  "id": "deepseek-v3",
-  "name": "DeepSeek-V3",
-  "company": "DeepSeek",
-  "chineseDescription": "...",
-  "github": "https://github.com/deepseek-ai/DeepSeek-V3",
-  "stars": 102415,
-  "category": "ai-model",
-  "useCases": ["智能对话", "代码生成"],
-  "createdAt": "2024-12-26"
+  "id": "project-id",
+  "name": "Project Name",
+  "company": "Company Name",
+  "country": "国家/地区",
+  "description": "英文描述",
+  "chineseDescription": "中文描述",
+  "github": "https://github.com/...",
+  "stars": 1000,
+  "category": "ai-agent",
+  "tags": ["tag1", "tag2"],
+  "useCases": ["场景1", "场景2"],
+  "installGuide": { "部署指南" },
+  "agentDeployPrompt": "AI部署提示词",
+  "createdAt": "2023-01-01",
+  "updatedAt": "2024-01-01"
 }
 ```
 
@@ -153,11 +240,30 @@ awesome-cnbigcompany-hub/
 示例用法：
 ```javascript
 // 获取所有项目
-const projects = await fetch('https://joe.github.io/awesome-cnbigcompany-hub/src/data/projects.json').then(r => r.json());
+const projects = await fetch('https://realchenwenqiao.github.io/awasomes-harness/src/data/projects.json').then(r => r.json());
 
-// 筛选企业知识库相关项目
-const kbProjects = projects.filter(p => p.useCases.includes('企业知识库'));
+// 筛选 AI Agent 框架
+const agentFrameworks = projects.filter(p => p.category === 'ai-agent');
+
+// 筛选中国企业的项目
+const chinaProjects = projects.filter(p => p.country === '中国');
 ```
+
+---
+
+## 🆕 更新日志
+
+详见 [CHANGELOG.md](docs/CHANGELOG.md)
+
+### [2.0.0] - 2026-03-30
+
+**重大改版：从"中国大厂开源"到"全球 AI Agent Harness 生态"**
+
+- 🌍 扩展为全球 30+ 科技企业
+- 📈 项目数量从 15 扩展到 312
+- 🚫 剔除大模型分类，专注 Agent 工具
+- 🏴 新增国家/地区筛选
+- 🎨 UI 全面重构
 
 ---
 
@@ -173,17 +279,18 @@ const kbProjects = projects.filter(p => p.useCases.includes('企业知识库'));
 
 ## 🙏 致谢
 
-感谢所有中国互联网大厂对开源社区的贡献！
+感谢全球科技企业对开源社区的贡献！
 
 特别感谢：
-- DeepSeek - 开源大模型
-- 阿里巴巴 - 通义千问系列
-- 百度 - PaddlePaddle 飞桨
-- 腾讯 - WeKnora
-- 字节跳动 - OpenViking / LightSeq
-- 智谱 AI / 清华 - ChatGLM / CogView
-- InfiniFlow - RAGFlow
+- **OpenAI** - GPT 系列与 API 生态
+- **Anthropic** - Claude 与 AI 安全研究
+- **Google / DeepMind** - Transformer、Gemini 等基础研究
+- **LangChain** - Agent 框架生态
+- **阿里巴巴** - 通义系列与开源工具
+- **智谱AI / 清华** - ChatGLM 与开源贡献
 
 ---
+
+**连接全球 AI Agent 开源生态 | 去中心化智能 | 开源共建**
 
 Built with ❤️ using React + Vite + Tailwind CSS
