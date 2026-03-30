@@ -1,0 +1,99 @@
+{
+  "companies": [
+    {
+      "name": "字节跳动",
+      "githubAccounts": [
+        "bytedance",
+        "volcengine",
+        "larksuite",
+        "youzan",
+        "openai"
+      ],
+      "logo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkul/1656335419611-4c319630-0582-4a9d-ba3f-55874735e16d.png"
+    },
+    {
+      "name": "阿里巴巴",
+      "githubAccounts": [
+        "alibaba",
+        "ant-design",
+        "alipay",
+        "taobao",
+        "aliyun"
+      ],
+      "logo": "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+    },
+    {
+      "name": "腾讯",
+      "githubAccounts": [
+        "Tencent",
+        "tencent",
+        "WeBankFinTech",
+        "TencentCloudBase"
+      ],
+      "logo": "https://img12.360buyimg.com/imagetools/jfs/t1/208024/33/25335/101057/647d2253F801c8370/8c29978d40880863.png"
+    },
+    {
+      "name": "百度",
+      "githubAccounts": [
+        "baidu",
+        "PaddlePaddle"
+      ],
+      "logo": "https://echarts.apache.org/images/echarts-logo.png"
+    },
+    {
+      "name": "美团",
+      "githubAccounts": [
+        "meituan",
+        "Meituan-Dianping",
+        "dianping"
+      ],
+      "logo": "https://github.com/Meituan-Dianping/mpvue/raw/master/assets/logo.png"
+    },
+    {
+      "name": "京东",
+      "githubAccounts": [
+        "jd",
+        "JD",
+        "NervJS"
+      ],
+      "logo": "https://img12.360buyimg.com/imagetools/jfs/t1/208024/33/25335/101057/647d2253F801c8370/8c29978d40880863.png"
+    },
+    {
+      "name": "小红书",
+      "githubAccounts": [
+        "xiaohongshu",
+        "xpzouying"
+      ],
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Xiaohongshu_logo.svg/200px-Xiaohongshu_logo.svg.png"
+    },
+    {
+      "name": "智谱 AI",
+      "githubAccounts": [
+        "THUDM",
+        "ZhipuAI"
+      ],
+      "logo": "https://raw.githubusercontent.com/THUDM/ChatGLM3/main/resources/logo.png"
+    },
+    {
+      "name": "DeepSeek",
+      "githubAccounts": [
+        "deepseek-ai"
+      ],
+      "logo": "https://avatars.githubusercontent.com/u/153539785?s=200&v=4"
+    },
+    {
+      "name": "深度好奇",
+      "githubAccounts": [
+        "infiniflow"
+      ],
+      "logo": "https://avatars.githubusercontent.com/u/76691925?s=200&v=4"
+    },
+    {
+      "name": "字节跳动（火山引擎）",
+      "githubAccounts": [
+        "volcengine"
+      ],
+      "logo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkul/1656335419611-4c319630-0582-4a9d-ba3f-55874735e16d.png"
+    }
+  ]
+}

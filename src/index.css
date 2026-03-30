@@ -1,11 +1,307 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=ZCOOL+XiaoWei&display=swap');
+
+/* 新中式科技美学 - CSS变量 */
+:root {
+  /* 主色：朱红与墨黑 */
+  --ink-black: #0a0a0a;
+  --ink-deep: #1a1a1a;
+  --ink-medium: #2d2d2d;
+  --cinnabar: #c41e3a;
+  --cinnabar-light: #e53b57;
+  --cinnabar-dark: #9a1830;
+
+  /* 宣纸色系 */
+  --paper-white: #f5f0e8;
+  --paper-warm: #ebe5db;
+  --paper-aged: #ddd5c7;
+  --paper-dark: #8a8278;
+
+  /* 金色点缀 */
+  --gold-accent: #c9a227;
+  --gold-light: #e0c060;
+
+  /* 字体 */
+  --font-display: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+  --font-body: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+
+  /* 间距系统 */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+}
+
+/* 暗色模式覆盖 */
+.dark {
+  --bg-primary: var(--ink-black);
+  --bg-secondary: var(--ink-deep);
+  --bg-tertiary: var(--ink-medium);
+  --text-primary: var(--paper-white);
+  --text-secondary: var(--paper-aged);
+  --text-muted: var(--paper-dark);
+  --border-color: rgba(255,255,255,0.1);
+}
+
+/* 亮色模式 */
+:root:not(.dark) {
+  --bg-primary: var(--paper-white);
+  --bg-secondary: var(--paper-warm);
+  --bg-tertiary: white;
+  --text-primary: var(--ink-black);
+  --text-secondary: var(--ink-medium);
+  --text-muted: var(--paper-dark);
+  --border-color: rgba(0,0,0,0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+}
+
+/* 宣纸纹理背景 */
+.paper-texture {
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-blend-mode: overlay;
+  background-size: 200px 200px;
+}
+
+.dark .paper-texture {
+  opacity: 0.03;
+}
+
+/* 书法风格标题 */
+.font-calligraphy {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+}
+
+/* 印章效果 */
+.seal-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cinnabar);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 700;
+  border-radius: 2px;
+  transform: rotate(-2deg);
+  box-shadow:
+    inset 0 0 10px rgba(0,0,0,0.2),
+    0 2px 4px rgba(196, 30, 58, 0.3);
+}
+
+.seal-mark::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 1px;
+}
+
+/* 竖排文字 */
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.3em;
+}
+
+/* 水墨渐变 */
+.ink-gradient {
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(10, 10, 10, 0.05) 25%,
+    rgba(10, 10, 10, 0.15) 50%,
+    rgba(196, 30, 58, 0.1) 75%,
+    transparent 100%
+  );
+}
+
+.dark .ink-gradient {
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(245, 240, 232, 0.03) 25%,
+    rgba(245, 240, 232, 0.08) 50%,
+    rgba(196, 30, 58, 0.15) 75%,
+    transparent 100%
+  );
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cinnabar);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cinnabar-light);
+}
+
+/* 选中文字样式 */
+::selection {
+  background: var(--cinnabar);
+  color: white;
+}
+
+/* 动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes inkSpread {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes brushStroke {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-ink-spread {
+  animation: inkSpread 1.2s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 卡片悬停效果 */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 40px -12px rgba(0,0,0,0.15),
+    0 0 0 1px var(--cinnabar);
+}
+
+.dark .card-hover:hover {
+  box-shadow:
+    0 20px 40px -12px rgba(0,0,0,0.5),
+    0 0 0 1px var(--cinnabar);
+}
+
+/* 筛选按钮样式 */
+.filter-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--cinnabar);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+  width: 100%;
+}
+
+.filter-btn.active {
+  color: var(--cinnabar);
+}
+
+/* 标签样式 */
+.tag-style {
+  position: relative;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.tag-style:hover {
+  border-color: var(--cinnabar);
+  color: var(--cinnabar);
+}
+
+/* 分隔线装饰 */
+.divider-ink {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--border-color) 20%,
+    var(--cinnabar) 50%,
+    var(--border-color) 80%,
+    transparent 100%
+  );
+}
+
+/* 网格背景 */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center center;
 }
