@@ -1,4 +1,4 @@
-# awasomes-harness 🤖
+# awesome-harness 🤖
 
 [![Website](https://img.shields.io/badge/website-online-green)](https://realchenwenqiao.github.io/awasomes-harness/)
 [![License](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
@@ -12,7 +12,7 @@
 
 ## 🎯 项目定位
 
-**awasomes-harness** 是一个聚焦 AI Agent 生态和 Harness 范式的开源项目聚合平台。
+**awesome-harness** 是一个聚焦 AI Agent 生态和 Harness 范式的开源项目聚合平台。
 
 区别于传统的大模型基础设施收录，我们专注于：
 - 🤖 **AI Agent 框架** - 可直接使用的 Agent 构建工具
