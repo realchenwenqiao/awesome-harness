@@ -10,13 +10,16 @@ function Home() {
   const [selectedCountry, setSelectedCountry] = useState('all');
   const [selectedUseCase, setSelectedUseCase] = useState('all');
   const [darkMode, setDarkMode] = useState(false);
+  const [showNewStars, setShowNewStars] = useState(false);
+  const [showAllCompanies, setShowAllCompanies] = useState(false);
+  const [showAllUseCases, setShowAllUseCases] = useState(false);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     document.documentElement.classList.toggle('dark');
   };
 
-  // 分类标签映射（必须在 useMemo 之前定义）
+  // 分类标签映射
   const categoryLabels = {
     'all': '全部',
     'ai-agent': 'AI Agent',
@@ -39,6 +42,32 @@ function Home() {
     '法国': '🇫🇷 法国'
   };
 
+  // 项目分区：1000 stars 以上和以下
+  const MIN_STARS = 1000;
+
+  const establishedProjects = useMemo(() => {
+    return projects.filter(p => (p.stars || 0) >= MIN_STARS);
+  }, []);
+
+  const risingStars = useMemo(() => {
+    return projects.filter(p => (p.stars || 0) < MIN_STARS);
+  }, []);
+
+  // AI Builder 统计（个人开发者 - 非公司项目）
+  const aiBuilders = useMemo(() => {
+    const companies = [...new Set(projects.map(p => p.company))];
+    // 假设知名公司列表
+    const knownCompanies = [
+      'OpenAI', 'Anthropic', 'Google', 'Meta', 'Microsoft', 'Amazon', 'NVIDIA',
+      '阿里巴巴', '腾讯', '百度', '字节跳动', 'DeepSeek', '智谱AI', '商汤', '华为', '京东', '美团', '小米', '快手', '网易',
+      'LangChain', 'Hugging Face', 'LlamaIndex', 'CrewAI', 'AutoGPT',
+      'Stripe', 'Vercel', 'Replicate', 'Modal', 'Fixie', 'Dust', 'Poe',
+      'Pinecone', 'Weaviate', 'Chroma', 'Cohere',
+      'InfiniFlow', 'THUDM', 'zhipuai', 'open-mmlab'
+    ];
+    return companies.filter(c => !knownCompanies.includes(c));
+  }, []);
+
   // 统计数据
   const stats = useMemo(() => {
     const totalStars = projects.reduce((sum, p) => sum + (p.stars || 0), 0);
@@ -51,34 +80,34 @@ function Home() {
       return { name: company, count: companyProjects.length, stars };
     }).sort((a, b) => b.stars - a.stars);
 
-    // 分类统计
     const categoryStats = {};
     projects.forEach(p => {
       const cat = categoryLabels[p.category] || p.category;
       categoryStats[cat] = (categoryStats[cat] || 0) + 1;
     });
 
-    // 国家统计
     const countryStats = {};
     projects.forEach(p => {
       const country = p.country || '其他';
       countryStats[country] = (countryStats[country] || 0) + 1;
     });
 
-    // Top 10 项目
     const topProjects = [...projects].sort((a, b) => (b.stars || 0) - (a.stars || 0)).slice(0, 10);
 
     return {
       totalProjects: projects.length,
+      establishedCount: establishedProjects.length,
+      risingCount: risingStars.length,
       totalCompanies: companies.length,
       totalCountries: countries.length,
+      aiBuilderCount: aiBuilders.length,
       totalStars,
       companyStats,
       categoryStats,
       countryStats,
       topProjects
     };
-  }, []);
+  }, [establishedProjects, risingStars, aiBuilders]);
 
   // 筛选数据
   const categories = ['all', ...new Set(projects.map(p => p.category))];
@@ -86,8 +115,11 @@ function Home() {
   const countries = ['all', ...new Set(projects.map(p => p.country).filter(Boolean))];
   const useCases = ['all', ...new Set(projects.flatMap(p => p.useCases || []))];
 
+  // 当前展示的项目列表
+  const currentProjects = showNewStars ? risingStars : establishedProjects;
+
   const filteredProjects = useMemo(() => {
-    return projects.filter(project => {
+    return currentProjects.filter(project => {
       const searchLower = searchTerm.toLowerCase();
       const text = `${project.name} ${project.description || ''} ${project.chineseDescription || ''} ${(project.tags || []).join(' ')}`.toLowerCase();
       const matchesSearch = !searchTerm || text.includes(searchLower);
@@ -99,7 +131,7 @@ function Home() {
 
       return matchesSearch && matchesCategory && matchesCompany && matchesCountry && matchesUseCase;
     });
-  }, [searchTerm, selectedCategory, selectedCompany, selectedCountry, selectedUseCase]);
+  }, [currentProjects, searchTerm, selectedCategory, selectedCompany, selectedCountry, selectedUseCase]);
 
   const clearFilters = () => {
     setSearchTerm('');
@@ -135,13 +167,33 @@ function Home() {
                 <Logo className="text-[var(--accent-color)]" size={36} />
                 <div>
                   <h1 className="font-serif text-xl font-semibold tracking-tight">
-                    Awesome Harmless
+                    Awesome Harness
                   </h1>
                 </div>
               </div>
 
               {/* Right actions */}
               <div className="flex items-center gap-2">
+                {/* Rising Stars Toggle */}
+                <button
+                  onClick={() => setShowNewStars(!showNewStars)}
+                  className={`btn text-sm ${showNewStars ? 'btn-primary' : 'btn-secondary'}`}
+                >
+                  <span>🌟</span>
+                  <span className="hidden sm:inline">{showNewStars ? '返回精选' : '新星榜'}</span>
+                </button>
+                {/* GitHub Link */}
+                <a
+                  href="https://github.com/realchenwenqiao/awesome-harness"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary text-sm hidden sm:flex items-center gap-1"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  <span>GitHub</span>
+                </a>
                 {filteredProjects.length > 0 && (
                   <Link
                     to={`/project/${getRandomProject().id}`}
@@ -170,14 +222,14 @@ function Home() {
               {/* Left: Title & Description */}
               <div className="space-y-6">
                 <div className="flex items-center gap-2">
-                  <span className="text-[var(--accent-color)] text-sm font-medium">全球精选开源项目</span>
+                  <span className="text-[var(--accent-color)] text-sm font-medium">Awesome Harness</span>
                   <span className="w-1 h-1 rounded-full bg-[var(--accent-color)]"></span>
-                  <span className="text-[var(--text-muted)] text-sm">{stats.totalProjects} 个项目</span>
+                  <span className="text-[var(--text-muted)] text-sm">{showNewStars ? stats.risingCount : stats.establishedCount} 个项目</span>
                 </div>
 
                 <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] tracking-tight">
                   汇聚顶级企业以及最佳实践的
-                  <span className="text-[var(--accent-color)]"> AI Agent, Harmless</span>
+                  <span className="text-[var(--accent-color)]"> AI Agent, Harness</span>
                   开源生态
                 </h2>
 
@@ -190,9 +242,9 @@ function Home() {
                 {/* Quick Stats */}
                 <div className="flex flex-wrap gap-8 pt-4">
                   {[
-                    { value: stats.totalProjects, label: '开源项目' },
+                    { value: showNewStars ? stats.risingCount : stats.establishedCount, label: showNewStars ? '新生代项目' : '精选项目' },
                     { value: stats.totalCompanies, label: '科技企业' },
-                    { value: stats.totalCountries, label: '国家/地区' },
+                    { value: stats.aiBuilderCount, label: 'AI Builder' },
                   ].map((stat, i) => (
                     <div key={i}>
                       <div className="font-serif text-3xl text-[var(--accent-color)] font-semibold">
@@ -204,7 +256,7 @@ function Home() {
                 </div>
               </div>
 
-              {/* Right: Stats Dashboard - Swapped: Top Projects now on right */}
+              {/* Right: Top 10 Projects */}
               <div className="card p-6">
                 <h3 className="font-serif text-xl mb-6 flex items-center gap-2">
                   <span className="text-[var(--accent-color)]">◆</span>
@@ -242,7 +294,7 @@ function Home() {
 
           <div className="divider mb-12"></div>
 
-          {/* Data Insights Dashboard - Layout swapped */}
+          {/* Data Insights Dashboard */}
           <section className="mb-12">
             <h3 className="font-serif text-xl mb-6 flex items-center gap-2">
               <span className="text-[var(--accent-color)]">◆</span>
@@ -250,7 +302,7 @@ function Home() {
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {/* Left: Company Stats (was on right, now on left) */}
+              {/* Left: Company Stats */}
               <div className="card p-6">
                 <h3 className="font-serif text-lg mb-6 flex items-center gap-2">
                   <span className="text-[var(--accent-color)]">◆</span>
@@ -282,7 +334,7 @@ function Home() {
                 </div>
               </div>
 
-              {/* Right: Category & Country Distribution */}
+              {/* Right: Stats */}
               <div className="space-y-5">
                 {/* Category Stats */}
                 <div className="card p-5">
@@ -336,9 +388,22 @@ function Home() {
 
           <div className="divider mb-12"></div>
 
+          {/* Section Header */}
+          <div className="mb-8">
+            <h2 className="font-serif text-2xl font-semibold mb-2">
+              {showNewStars ? '🌟 新生代项目' : '✨ 精选项目'}
+            </h2>
+            <p className="text-[var(--text-muted)] text-sm">
+              {showNewStars
+                ? `${stats.risingCount} 个 ${MIN_STARS} stars 以下的潜力项目`
+                : `${stats.establishedCount} 个 ${MIN_STARS}+ stars 的成熟项目`
+              }
+            </p>
+          </div>
+
           {/* Search & Filter Section */}
           <section className="mb-10 space-y-8">
-            {/* Search - Fixed: removed icon from input, using placeholder instead */}
+            {/* Search */}
             <div className="relative max-w-xl mx-auto">
               <input
                 type="text"
@@ -359,7 +424,7 @@ function Home() {
 
             {/* Multi-dimension Filters */}
             <div className="space-y-6">
-              {/* Country Filter - New */}
+              {/* Country Filter */}
               <div className="space-y-3">
                 <h4 className="text-sm font-medium text-[var(--text-secondary)]">按国家/地区</h4>
                 <div className="flex flex-wrap gap-2">
@@ -375,11 +440,11 @@ function Home() {
                 </div>
               </div>
 
-              {/* Company Filter */}
+              {/* Company Filter - Expandable */}
               <div className="space-y-3">
                 <h4 className="text-sm font-medium text-[var(--text-secondary)]">按企业筛选</h4>
                 <div className="flex flex-wrap gap-2 items-center">
-                  {companies.slice(0, 15).map(company => (
+                  {companies.slice(0, showAllCompanies ? companies.length : 15).map(company => (
                     <button
                       key={company}
                       onClick={() => setSelectedCompany(company)}
@@ -390,20 +455,20 @@ function Home() {
                   ))}
                   {companies.length > 15 && (
                     <button
-                      onClick={() => alert(`更多企业：${companies.slice(15).join(', ')}`)}
+                      onClick={() => setShowAllCompanies(!showAllCompanies)}
                       className="text-sm text-[var(--accent-color)] hover:underline px-2 py-1"
                     >
-                      +{companies.length - 16} 更多
+                      {showAllCompanies ? '收起' : `+${companies.length - 16} 更多`}
                     </button>
                   )}
                 </div>
               </div>
 
-              {/* Use Case Filter - Added back */}
+              {/* Use Case Filter - Expandable */}
               <div className="space-y-3">
                 <h4 className="text-sm font-medium text-[var(--text-secondary)]">按应用场景</h4>
-                <div className="flex flex-wrap gap-2">
-                  {useCases.slice(0, 12).map(useCase => (
+                <div className="flex flex-wrap gap-2 items-center">
+                  {useCases.slice(0, showAllUseCases ? useCases.length : 12).map(useCase => (
                     <button
                       key={useCase}
                       onClick={() => setSelectedUseCase(useCase)}
@@ -413,14 +478,17 @@ function Home() {
                     </button>
                   ))}
                   {useCases.length > 12 && (
-                    <span className="text-sm text-[var(--text-muted)] px-2 py-1">
-                      +{useCases.length - 13} 更多
-                    </span>
+                    <button
+                      onClick={() => setShowAllUseCases(!showAllUseCases)}
+                      className="text-sm text-[var(--accent-color)] hover:underline px-2 py-1"
+                    >
+                      {showAllUseCases ? '收起' : `+${useCases.length - 13} 更多`}
+                    </button>
                   )}
                 </div>
               </div>
 
-              {/* Category Filter - Removed ai-model */}
+              {/* Category Filter */}
               <div className="space-y-3">
                 <h4 className="text-sm font-medium text-[var(--text-secondary)]">按技术类别</h4>
                 <div className="flex flex-wrap gap-2">
@@ -471,7 +539,7 @@ function Home() {
                   className="card group p-5 opacity-0 animate-fade-in"
                   style={{ animationDelay: `${index * 0.05}s`, animationFillMode: 'forwards' }}
                 >
-                  {/* Header: Company & Stars - Removed avatar */}
+                  {/* Header: Company & Stars */}
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h3 className="font-medium text-[var(--text-primary)] group-hover:text-[var(--accent-color)]
@@ -509,7 +577,7 @@ function Home() {
                     ))}
                   </div>
 
-                  {/* Footer - Removed language display */}
+                  {/* Footer */}
                   <div className="pt-4 border-t border-[var(--border-color)] flex justify-between items-center">
                     <span className="text-xs text-[var(--text-muted)]">{project.country || '未知'}</span>
                     <span className="text-[var(--accent-color)] text-sm group-hover:translate-x-1 transition-transform">
@@ -534,13 +602,13 @@ function Home() {
           )}
         </main>
 
-        {/* Footer - Updated for global focus */}
+        {/* Footer */}
         <footer className="border-t border-[var(--border-color)] py-12 mt-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Logo className="text-[var(--accent-color)] mx-auto mb-4" size={32} />
-            <p className="font-serif text-lg mb-2">连接全球 AI Agent 开源生态</p>
+            <p className="font-serif text-lg mb-2">Awesome Harness - AI Agent 开源生态</p>
             <p className="text-sm text-[var(--text-muted)]">
-              收录 {stats.totalProjects} 个项目 · {stats.totalCompanies} 家企业 · {stats.totalCountries} 个国家/地区
+              {stats.establishedCount} 个精选项目 · {stats.risingCount} 个新生代项目 · {stats.aiBuilderCount} 位 AI Builder
             </p>
             <p className="text-xs text-[var(--text-muted)] mt-4">
               专注 AI Agent Harness 范式 · 去中心化智能 · 开源共建

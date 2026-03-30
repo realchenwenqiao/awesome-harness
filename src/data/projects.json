@@ -1,5 +1,208 @@
 [
   {
+    "id": "langroid",
+    "name": "langroid",
+    "company": "Langroid",
+    "country": "美国",
+    "description": "Harness LLMs with Multi-Agent Programming",
+    "chineseDescription": "Langroid 是一个多智能体编程框架，支持 LLM 驱动的 Agent 协作开发。提供直观的 Agent 定义和通信机制，内置 RAG 支持，让开发者能够轻松构建复杂的多 Agent 应用系统。",
+    "github": "https://github.com/langroid/langroid",
+    "category": "ai-agent",
+    "tags": [
+      "multi-agent",
+      "llm-framework",
+      "rag",
+      "agent-collaboration"
+    ],
+    "useCases": [
+      "多智能体编程",
+      "LLM应用开发",
+      "RAG系统",
+      "智能体协作"
+    ],
+    "createdAt": "2023-04-16",
+    "updatedAt": "2026-03-30",
+    "installGuide": {},
+    "agentDeployPrompt": "请帮我部署 langroid。\n\n项目信息：\n- 名称: langroid\n- 所属: Langroid\n- GitHub: https://github.com/langroid/langroid\n\n请执行以下步骤：\n1. 克隆仓库并查看 README\n2. 根据文档安装依赖\n3. 配置必要的环境变量\n4. 运行示例验证安装\n\n如遇到问题，请查看项目文档或 GitHub Issues。",
+    "stars": 3943,
+    "language": "Python",
+    "companyLogo": "https://avatars.githubusercontent.com/u/130325191?v=4"
+  },
+  {
+    "id": "oh-my-openagent",
+    "name": "oh-my-openagent",
+    "company": "Yeongyu",
+    "country": "美国",
+    "description": "omo; the best agent harness - previously oh-my-opencode",
+    "chineseDescription": "Oh My OpenAgent 是一个 CLI 自动化和 Agent 工作流框架。专注于命令行环境下的任务自动化，提供简洁的语法和强大的编排能力，让开发者能够快速构建命令行 Agent 应用。",
+    "github": "https://github.com/code-yeongyu/oh-my-openagent",
+    "category": "ai-agent",
+    "tags": [
+      "openagent",
+      "automation",
+      "cli",
+      "workflow"
+    ],
+    "useCases": [
+      "命令行自动化",
+      "工作流编排",
+      "任务自动化",
+      "CLI增强"
+    ],
+    "createdAt": "2025-12-03",
+    "updatedAt": "2026-03-30",
+    "installGuide": {},
+    "agentDeployPrompt": "请帮我部署 oh-my-openagent。\n\n项目信息：\n- 名称: oh-my-openagent\n- 所属: Yeongyu\n- GitHub: https://github.com/code-yeongyu/oh-my-openagent\n\n请执行以下步骤：\n1. 克隆仓库并查看 README\n2. 根据文档安装依赖\n3. 配置必要的环境变量\n4. 运行示例验证安装\n\n如遇到问题，请查看项目文档或 GitHub Issues。",
+    "stars": 44944,
+    "language": "TypeScript",
+    "companyLogo": "https://avatars.githubusercontent.com/u/11153873?v=4"
+  },
+  {
+    "id": "hive",
+    "name": "hive",
+    "company": "Aden Hive",
+    "country": "美国",
+    "description": "Outcome driven agent development framework and runtime harness",
+    "chineseDescription": "Hive 是一个多智能体协作框架，采用群体智能(swarm)理念设计。支持多个 Agent 组成网络协同工作，通过分布式任务分配和协作机制解决复杂问题，适用于需要多角色配合的场景。",
+    "github": "https://github.com/aden-hive/hive",
+    "category": "ai-agent",
+    "tags": [
+      "multi-agent",
+      "swarm",
+      "collaboration",
+      "agent-network"
+    ],
+    "useCases": [
+      "多智能体协作",
+      "群体智能",
+      "分布式任务",
+      "团队协作"
+    ],
+    "createdAt": "2026-01-12",
+    "updatedAt": "2026-03-30",
+    "installGuide": {},
+    "agentDeployPrompt": "请帮我部署 hive。\n\n项目信息：\n- 名称: hive\n- 所属: Aden Hive\n- GitHub: https://github.com/aden-hive/hive\n\n请执行以下步骤：\n1. 克隆仓库并查看 README\n2. 根据文档安装依赖\n3. 配置必要的环境变量\n4. 运行示例验证安装\n\n如遇到问题，请查看项目文档或 GitHub Issues。",
+    "stars": 9954,
+    "language": "Python",
+    "companyLogo": "https://avatars.githubusercontent.com/u/262650699?v=4"
+  },
+  {
+    "id": "lm-evaluation-harness",
+    "name": "lm-evaluation-harness",
+    "company": "EleutherAI",
+    "country": "美国",
+    "description": "A framework for few-shot evaluation of language models.",
+    "chineseDescription": "LM Evaluation Harness 是 EleutherAI 开发的大型语言模型评估框架。支持数百个评估任务和基准测试，被学术界广泛采用进行模型性能对比和研究，是 LLM 评估领域的事实标准工具。",
+    "github": "https://github.com/EleutherAI/lm-evaluation-harness",
+    "category": "ai-tool",
+    "tags": [
+      "evaluation",
+      "llm",
+      "benchmark",
+      "testing"
+    ],
+    "useCases": [
+      "模型评估",
+      "基准测试",
+      "性能对比",
+      "学术研究"
+    ],
+    "createdAt": "2020-08-28",
+    "updatedAt": "2026-03-30",
+    "installGuide": {},
+    "agentDeployPrompt": "请帮我部署 lm-evaluation-harness。\n\n项目信息：\n- 名称: lm-evaluation-harness\n- 所属: EleutherAI\n- GitHub: https://github.com/EleutherAI/lm-evaluation-harness\n\n请执行以下步骤：\n1. 克隆仓库并查看 README\n2. 根据文档安装依赖\n3. 配置必要的环境变量\n4. 运行示例验证安装\n\n如遇到问题，请查看项目文档或 GitHub Issues。",
+    "stars": 11930,
+    "language": "Python",
+    "companyLogo": "https://avatars.githubusercontent.com/u/68924597?v=4"
+  },
+  {
+    "id": "spec-kit",
+    "name": "spec-kit",
+    "company": "GitHub",
+    "country": "美国",
+    "description": "💫 Toolkit to help you get started with Spec-Driven Development",
+    "chineseDescription": "Spec Kit 是 GitHub 推出的 API 规范和设计工具包。帮助开发者定义、管理和生成 API 规范文档，支持 OpenAPI 标准，提供一致的接口设计体验和自动化文档生成能力。",
+    "github": "https://github.com/github/spec-kit",
+    "category": "ai-tool",
+    "tags": [
+      "github",
+      "specification",
+      "api-design",
+      "documentation"
+    ],
+    "useCases": [
+      "API设计",
+      "规范定义",
+      "文档生成",
+      "接口管理"
+    ],
+    "createdAt": "2025-08-21",
+    "updatedAt": "2026-03-30",
+    "installGuide": {},
+    "agentDeployPrompt": "请帮我部署 spec-kit。\n\n项目信息：\n- 名称: spec-kit\n- 所属: GitHub\n- GitHub: https://github.com/github/spec-kit\n\n请执行以下步骤：\n1. 克隆仓库并查看 README\n2. 根据文档安装依赖\n3. 配置必要的环境变量\n4. 运行示例验证安装\n\n如遇到问题，请查看项目文档或 GitHub Issues。",
+    "stars": 83731,
+    "language": "Python",
+    "companyLogo": "https://avatars.githubusercontent.com/u/9919?v=4"
+  },
+  {
+    "id": "learn-claude-code",
+    "name": "learn-claude-code",
+    "company": "ShareAI Lab",
+    "country": "美国",
+    "description": "Bash is all you need -  A nano claude code–like 「agent harness」, built from 0 to 1",
+    "chineseDescription": "learn-claude-code 是一个系统性的 Claude Code 学习资源和教程集合。涵盖了从入门到精通的完整学习路径，包括最佳实践、使用技巧、实际案例和高级功能，帮助开发者快速掌握 Claude Code 的使用方法。",
+    "github": "https://github.com/shareAI-lab/learn-claude-code",
+    "category": "ai-tool",
+    "tags": [
+      "claude-code",
+      "tutorial",
+      "learning",
+      "guide"
+    ],
+    "useCases": [
+      "学习资源",
+      "入门教程",
+      "最佳实践",
+      "技能提升"
+    ],
+    "createdAt": "2025-06-29",
+    "updatedAt": "2026-03-30",
+    "installGuide": {},
+    "agentDeployPrompt": "请帮我部署 learn-claude-code。\n\n项目信息：\n- 名称: learn-claude-code\n- 所属: ShareAI Lab\n- GitHub: https://github.com/shareAI-lab/learn-claude-code\n\n请执行以下步骤：\n1. 克隆仓库并查看 README\n2. 根据文档安装依赖\n3. 配置必要的环境变量\n4. 运行示例验证安装\n\n如遇到问题，请查看项目文档或 GitHub Issues。",
+    "stars": 43775,
+    "language": "TypeScript",
+    "companyLogo": "https://avatars.githubusercontent.com/u/189210346?v=4"
+  },
+  {
+    "id": "openharness",
+    "name": "OpenHarness",
+    "company": "清华NMRC",
+    "country": "中国",
+    "description": "OpenHarness is a long-term, fully autonomous AI agent execution framework for OpenClaw built on the concept of Harness Engineering. It enables your AI to work tirelessly for you 24/7 with just a single command.",
+    "chineseDescription": "OpenHarness 是一个开源的 Agent 能力评估框架，用于系统性地测试和评估 AI Agent 在各种任务上的表现。提供了标准化的测试基准和评估指标，帮助开发者了解 Agent 的能力边界和优化方向。",
+    "github": "https://github.com/thu-nmrc/OpenHarness",
+    "category": "ai-agent",
+    "tags": [
+      "harness",
+      "agent-framework",
+      "open-source",
+      "evaluation"
+    ],
+    "useCases": [
+      "Agent评估",
+      "能力测试",
+      "框架验证",
+      "性能基准"
+    ],
+    "createdAt": "2026-03-29",
+    "updatedAt": "2026-03-30",
+    "installGuide": {},
+    "agentDeployPrompt": "请帮我部署 OpenHarness。\n\n项目信息：\n- 名称: OpenHarness\n- 所属: 清华NMRC\n- GitHub: https://github.com/thu-nmrc/OpenHarness\n\n请执行以下步骤：\n1. 克隆仓库并查看 README\n2. 根据文档安装依赖\n3. 配置必要的环境变量\n4. 运行示例验证安装\n\n如遇到问题，请查看项目文档或 GitHub Issues。",
+    "stars": 16,
+    "language": "Python",
+    "companyLogo": "https://avatars.githubusercontent.com/u/227120457?v=4"
+  },
+  {
     "id": "superpowers",
     "name": "Superpowers",
     "company": "obra",
