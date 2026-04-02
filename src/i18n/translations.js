@@ -31,8 +31,10 @@ export const translations = {
       hero: {
         subtitle: 'AI Agent Harness 开源生态',
         projectsCount: '个项目',
-        title: '汇聚顶级企业以及 AI Builder 关于 AI Agent Harness 的最佳实践开源项目',
-        description: '聚焦 AI Agent 生态和 Harness 范式的可直接使用工具，收录 OpenAI、Anthropic、Google、阿里巴巴、腾讯、百度等全球 30+ 科技企业和顶级开发者的开源项目，欢迎投稿补充。',
+        titleStart: '汇聚',
+        titleHighlight: 'AI Agent & Harness',
+        titleEnd: '的最佳实践开源项目',
+        description: '聚焦头部 AI 企业 & AI Builder 关于 AI Agent 生态和 Harness 范式的可直接使用工具，收录 OpenAI、Anthropic、Google、阿里巴巴、腾讯、百度等全球 30+ 科技企业和顶级开发者的开源项目，欢迎投稿补充。',
       },
       // 统计标签
       stats: {
@@ -195,8 +197,10 @@ export const translations = {
       hero: {
         subtitle: 'AI Agent Harness Open Source Ecosystem',
         projectsCount: ' projects',
-        title: 'Curated Best Practices from Top Tech Companies and AI Builders for AI Agent Harness',
-        description: 'Focused on ready-to-use tools for AI Agent ecosystem and Harness paradigm. Featuring open source projects from 30+ global tech companies including OpenAI, Anthropic, Google, Alibaba, Tencent, Baidu, and top developers. Submissions welcome.',
+        titleStart: 'Curated Best Practices for ',
+        titleHighlight: 'AI Agent & Harness',
+        titleEnd: '',
+        description: 'Focused on ready-to-use tools for AI Agent ecosystem and Harness paradigm from leading AI companies & AI Builders. Featuring open source projects from 30+ global tech companies including OpenAI, Anthropic, Google, Alibaba, Tencent, Baidu, and top developers. Submissions welcome.',
       },
       // Stats labels
       stats: {

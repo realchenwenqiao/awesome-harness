@@ -213,7 +213,9 @@ function Home() {
                 </div>
 
                 <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] tracking-tight">
-                  {t('home.hero.title')}
+                  {t('home.hero.titleStart')}
+                  <span className="text-[var(--accent-color)]">{t('home.hero.titleHighlight')}</span>
+                  {t('home.hero.titleEnd')}
                 </h2>
 
                 <p className="text-[var(--text-secondary)] text-lg max-w-lg leading-relaxed">
