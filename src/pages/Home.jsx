@@ -2,8 +2,14 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import projects from '../data/projects.json';
 import { Logo } from '../components/Logo';
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageSwitcher from '../components/LanguageSwitcher';
+import { getCategoryLabel, getUseCaseLabel } from '../i18n/tags';
+import { useTranslations } from '../i18n/useTranslations';
 
 function Home() {
+  const { language, isZh } = useLanguage();
+  const { t } = useTranslations();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedCompany, setSelectedCompany] = useState('all');
@@ -19,27 +25,17 @@ function Home() {
     document.documentElement.classList.toggle('dark');
   };
 
-  // 分类标签映射
-  const categoryLabels = {
-    'all': '全部',
-    'ai-agent': 'AI Agent',
-    'ai-workflow': '工作流编排',
-    'ai-rag': 'RAG 工具',
-    'ai-memory': '记忆系统',
-    'ai-tool': 'AI 工具',
-    'ai-integration': '集成方案',
-    'automation': '自动化',
-    'harness': 'Harness 范式',
-    'ai-infra': 'Agent 基础设施'
-  };
+  // 获取当前语言的分区标签
+  const allLabel = isZh ? '全部' : 'All';
+  const allRegionLabel = isZh ? '全部地区' : 'All Regions';
 
   // 国家/地区标签映射
   const countryLabels = {
-    'all': '全部地区',
-    '中国': '🇨🇳 中国',
-    '美国': '🇺🇸 美国',
-    '荷兰': '🇳🇱 荷兰',
-    '法国': '🇫🇷 法国'
+    'all': allRegionLabel,
+    '中国': isZh ? '🇨🇳 中国' : '🇨🇳 China',
+    '美国': isZh ? '🇺🇸 美国' : '🇺🇸 USA',
+    '荷兰': isZh ? '🇳🇱 荷兰' : '🇳🇱 Netherlands',
+    '法国': isZh ? '🇫🇷 法国' : '🇫🇷 France'
   };
 
   // 项目分区：1000 stars 以上和以下
@@ -82,7 +78,7 @@ function Home() {
 
     const categoryStats = {};
     projects.forEach(p => {
-      const cat = categoryLabels[p.category] || p.category;
+      const cat = p.category;
       categoryStats[cat] = (categoryStats[cat] || 0) + 1;
     });
 
@@ -109,19 +105,23 @@ function Home() {
     };
   }, [establishedProjects, risingStars, aiBuilders]);
 
-  // 筛选数据
-  const categories = ['all', ...new Set(projects.map(p => p.category))];
-  const companies = ['all', ...new Set(projects.map(p => p.company))];
-  const countries = ['all', ...new Set(projects.map(p => p.country).filter(Boolean))];
-  const useCases = ['all', ...new Set(projects.flatMap(p => p.useCases || []))];
-
   // 当前展示的项目列表
   const currentProjects = showNewStars ? risingStars : establishedProjects;
+
+  // 筛选数据 - 基于当前展示的项目列表
+  const categories = ['all', ...new Set(currentProjects.map(p => p.category))];
+  const companies = ['all', ...new Set(currentProjects.map(p => p.company))];
+  const countries = ['all', ...new Set(currentProjects.map(p => p.country).filter(Boolean))];
+  const useCases = ['all', ...new Set(currentProjects.flatMap(p => p.useCases || []))];
 
   const filteredProjects = useMemo(() => {
     return currentProjects.filter(project => {
       const searchLower = searchTerm.toLowerCase();
-      const text = `${project.name} ${project.description || ''} ${project.chineseDescription || ''} ${(project.tags || []).join(' ')}`.toLowerCase();
+      // 根据语言选择搜索的描述字段
+      const descField = isZh
+        ? (project.descriptionZh || project.chineseDescription || '')
+        : (project.description || '');
+      const text = `${project.name} ${descField} ${(project.tags || []).join(' ')}`.toLowerCase();
       const matchesSearch = !searchTerm || text.includes(searchLower);
 
       const matchesCategory = selectedCategory === 'all' || project.category === selectedCategory;
@@ -131,7 +131,7 @@ function Home() {
 
       return matchesSearch && matchesCategory && matchesCompany && matchesCountry && matchesUseCase;
     });
-  }, [currentProjects, searchTerm, selectedCategory, selectedCompany, selectedCountry, selectedUseCase]);
+  }, [currentProjects, searchTerm, selectedCategory, selectedCompany, selectedCountry, selectedUseCase, isZh]);
 
   const clearFilters = () => {
     setSearchTerm('');
@@ -174,14 +174,8 @@ function Home() {
 
               {/* Right actions */}
               <div className="flex items-center gap-2">
-                {/* Rising Stars Toggle */}
-                <button
-                  onClick={() => setShowNewStars(!showNewStars)}
-                  className={`btn text-sm ${showNewStars ? 'btn-primary' : 'btn-secondary'}`}
-                >
-                  <span>🌟</span>
-                  <span className="hidden sm:inline">{showNewStars ? '返回精选' : '新星榜'}</span>
-                </button>
+                {/* Language Switcher */}
+                <LanguageSwitcher />
                 {/* GitHub Link */}
                 <a
                   href="https://github.com/realchenwenqiao/awesome-harness"
@@ -194,15 +188,6 @@ function Home() {
                   </svg>
                   <span>GitHub</span>
                 </a>
-                {filteredProjects.length > 0 && (
-                  <Link
-                    to={`/project/${getRandomProject().id}`}
-                    className="hidden sm:flex btn btn-secondary text-sm"
-                  >
-                    <span>随机探索</span>
-                    <span className="text-lg">✦</span>
-                  </Link>
-                )}
                 <button
                   onClick={toggleDarkMode}
                   className="btn btn-secondary p-2"
@@ -222,29 +207,25 @@ function Home() {
               {/* Left: Title & Description */}
               <div className="space-y-6">
                 <div className="flex items-center gap-2">
-                  <span className="text-[var(--accent-color)] text-sm font-medium">Awesome Harness</span>
+                  <span className="text-[var(--accent-color)] text-sm font-medium">{t('home.hero.subtitle')}</span>
                   <span className="w-1 h-1 rounded-full bg-[var(--accent-color)]"></span>
-                  <span className="text-[var(--text-muted)] text-sm">{showNewStars ? stats.risingCount : stats.establishedCount} 个项目</span>
+                  <span className="text-[var(--text-muted)] text-sm">{showNewStars ? stats.risingCount : stats.establishedCount}{t('home.hero.projectsCount')}</span>
                 </div>
 
                 <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] tracking-tight">
-                  汇聚顶级企业以及最佳实践的
-                  <span className="text-[var(--accent-color)]"> AI Agent, Harness</span>
-                  开源生态
+                  {t('home.hero.title')}
                 </h2>
 
                 <p className="text-[var(--text-secondary)] text-lg max-w-lg leading-relaxed">
-                  聚焦 AI Agent 生态和 Harness 范式的可直接使用工具，
-                  收录 OpenAI、Anthropic、Google、阿里巴巴、腾讯、百度等全球 30+ 科技企业的开源项目。
-                  汇聚顶级开发者的最佳实践。
+                  {t('home.hero.description')}
                 </p>
 
                 {/* Quick Stats */}
                 <div className="flex flex-wrap gap-8 pt-4">
                   {[
-                    { value: showNewStars ? stats.risingCount : stats.establishedCount, label: showNewStars ? '新生代项目' : '精选项目' },
-                    { value: stats.totalCompanies, label: '科技企业' },
-                    { value: stats.aiBuilderCount, label: 'AI Builder' },
+                    { value: showNewStars ? stats.risingCount : stats.establishedCount, label: showNewStars ? t('home.stats.risingProjects') : t('home.stats.establishedProjects') },
+                    { value: stats.totalCompanies, label: t('home.stats.techCompanies') },
+                    { value: stats.aiBuilderCount, label: t('home.stats.aiBuilders') },
                   ].map((stat, i) => (
                     <div key={i}>
                       <div className="font-serif text-3xl text-[var(--accent-color)] font-semibold">
@@ -260,7 +241,7 @@ function Home() {
               <div className="card p-6">
                 <h3 className="font-serif text-xl mb-6 flex items-center gap-2">
                   <span className="text-[var(--accent-color)]">◆</span>
-                  Star 数 Top 10 项目
+                  {t('home.topProjects.title')}
                 </h3>
 
                 <div className="space-y-3">
@@ -298,7 +279,7 @@ function Home() {
           <section className="mb-12">
             <h3 className="font-serif text-xl mb-6 flex items-center gap-2">
               <span className="text-[var(--accent-color)]">◆</span>
-              数据洞察
+              {t('home.insights.title')}
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -306,7 +287,7 @@ function Home() {
               <div className="card p-6">
                 <h3 className="font-serif text-lg mb-6 flex items-center gap-2">
                   <span className="text-[var(--accent-color)]">◆</span>
-                  企业开源贡献排行
+                  {t('home.insights.companyRanking')}
                 </h3>
 
                 <div className="space-y-4">
@@ -338,14 +319,14 @@ function Home() {
               <div className="space-y-5">
                 {/* Category Stats */}
                 <div className="card p-5">
-                  <h4 className="text-sm font-medium text-[var(--text-muted)] mb-4">技术分类分布</h4>
+                  <h4 className="text-sm font-medium text-[var(--text-muted)] mb-4">{t('home.insights.categoryDistribution')}</h4>
                   <div className="space-y-3">
                     {Object.entries(stats.categoryStats)
                       .sort((a, b) => b[1] - a[1])
                       .slice(0, 8)
                       .map(([cat, count]) => (
                         <div key={cat} className="flex items-center justify-between">
-                          <span className="text-sm text-[var(--text-secondary)]">{cat}</span>
+                          <span className="text-sm text-[var(--text-secondary)]">{getCategoryLabel(cat, language)}</span>
                           <div className="flex items-center gap-2">
                             <div className="w-16 h-1.5 bg-[var(--bg-tertiary)] rounded-full overflow-hidden">
                               <div
@@ -362,7 +343,7 @@ function Home() {
 
                 {/* Country Stats */}
                 <div className="card p-5">
-                  <h4 className="text-sm font-medium text-[var(--text-muted)] mb-4">国家/地区分布</h4>
+                  <h4 className="text-sm font-medium text-[var(--text-muted)] mb-4">{t('home.insights.countryDistribution')}</h4>
                   <div className="space-y-3">
                     {Object.entries(stats.countryStats)
                       .sort((a, b) => b[1] - a[1])
@@ -391,12 +372,12 @@ function Home() {
           {/* Section Header */}
           <div className="mb-8">
             <h2 className="font-serif text-2xl font-semibold mb-2">
-              {showNewStars ? '🌟 新生代项目' : '✨ 精选项目'}
+              {showNewStars ? t('home.projectsSection.risingTitle') : t('home.projectsSection.establishedTitle')}
             </h2>
             <p className="text-[var(--text-muted)] text-sm">
               {showNewStars
-                ? `${stats.risingCount} 个 ${MIN_STARS} stars 以下的潜力项目`
-                : `${stats.establishedCount} 个 ${MIN_STARS}+ stars 的成熟项目`
+                ? t('home.projectsSection.risingDescription', { count: stats.risingCount, minStars: MIN_STARS })
+                : t('home.projectsSection.establishedDescription', { count: stats.establishedCount, minStars: MIN_STARS })
               }
             </p>
           </div>
@@ -407,7 +388,7 @@ function Home() {
             <div className="relative max-w-xl mx-auto">
               <input
                 type="text"
-                placeholder="🔍 搜索项目名称、技术栈、应用场景..."
+                placeholder={t('home.search.placeholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="input w-full px-4 py-3"
@@ -426,7 +407,7 @@ function Home() {
             <div className="space-y-6">
               {/* Country Filter */}
               <div className="space-y-3">
-                <h4 className="text-sm font-medium text-[var(--text-secondary)]">按国家/地区</h4>
+                <h4 className="text-sm font-medium text-[var(--text-secondary)]">{t('home.filters.byCountry')}</h4>
                 <div className="flex flex-wrap gap-2">
                   {countries.map(country => (
                     <button
@@ -442,7 +423,7 @@ function Home() {
 
               {/* Company Filter - Expandable */}
               <div className="space-y-3">
-                <h4 className="text-sm font-medium text-[var(--text-secondary)]">按企业筛选</h4>
+                <h4 className="text-sm font-medium text-[var(--text-secondary)]">{t('home.filters.byCompany')}</h4>
                 <div className="flex flex-wrap gap-2 items-center">
                   {companies.slice(0, showAllCompanies ? companies.length : 15).map(company => (
                     <button
@@ -450,7 +431,7 @@ function Home() {
                       onClick={() => setSelectedCompany(company)}
                       className={`filter-btn ${selectedCompany === company ? 'active' : ''}`}
                     >
-                      {company === 'all' ? '全部企业' : company}
+                      {company === 'all' ? t('home.filters.allCompanies') : company}
                     </button>
                   ))}
                   {companies.length > 15 && (
@@ -458,7 +439,7 @@ function Home() {
                       onClick={() => setShowAllCompanies(!showAllCompanies)}
                       className="text-sm text-[var(--accent-color)] hover:underline px-2 py-1"
                     >
-                      {showAllCompanies ? '收起' : `+${companies.length - 16} 更多`}
+                      {showAllCompanies ? t('common.collapse') : t('common.more', { count: companies.length - 16 })}
                     </button>
                   )}
                 </div>
@@ -466,7 +447,7 @@ function Home() {
 
               {/* Use Case Filter - Expandable */}
               <div className="space-y-3">
-                <h4 className="text-sm font-medium text-[var(--text-secondary)]">按应用场景</h4>
+                <h4 className="text-sm font-medium text-[var(--text-secondary)]">{t('home.filters.byUseCase')}</h4>
                 <div className="flex flex-wrap gap-2 items-center">
                   {useCases.slice(0, showAllUseCases ? useCases.length : 12).map(useCase => (
                     <button
@@ -474,7 +455,7 @@ function Home() {
                       onClick={() => setSelectedUseCase(useCase)}
                       className={`filter-btn ${selectedUseCase === useCase ? 'active' : ''}`}
                     >
-                      {useCase === 'all' ? '全部场景' : useCase}
+                      {useCase === 'all' ? (isZh ? '全部场景' : 'All Scenes') : getUseCaseLabel(useCase, language)}
                     </button>
                   ))}
                   {useCases.length > 12 && (
@@ -482,7 +463,7 @@ function Home() {
                       onClick={() => setShowAllUseCases(!showAllUseCases)}
                       className="text-sm text-[var(--accent-color)] hover:underline px-2 py-1"
                     >
-                      {showAllUseCases ? '收起' : `+${useCases.length - 13} 更多`}
+                      {showAllUseCases ? t('common.collapse') : t('common.more', { count: useCases.length - 13 })}
                     </button>
                   )}
                 </div>
@@ -490,7 +471,7 @@ function Home() {
 
               {/* Category Filter */}
               <div className="space-y-3">
-                <h4 className="text-sm font-medium text-[var(--text-secondary)]">按技术类别</h4>
+                <h4 className="text-sm font-medium text-[var(--text-secondary)]">{t('home.filters.byCategory')}</h4>
                 <div className="flex flex-wrap gap-2">
                   {categories.filter(cat => cat !== 'ai-model').map(category => (
                     <button
@@ -498,7 +479,7 @@ function Home() {
                       onClick={() => setSelectedCategory(category)}
                       className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
                     >
-                      {categoryLabels[category] || category}
+                      {category === 'all' ? allLabel : getCategoryLabel(category, language)}
                     </button>
                   ))}
                 </div>
@@ -512,8 +493,7 @@ function Home() {
                   onClick={clearFilters}
                   className="text-sm text-[var(--accent-color)] hover:underline flex items-center gap-1"
                 >
-                  <span>清除所有筛选</span>
-                  <span>↺</span>
+                  <span>{t('home.filters.clearAll')}</span>
                 </button>
               </div>
             )}
@@ -522,11 +502,16 @@ function Home() {
           {/* Results Header */}
           <div className="flex justify-between items-center mb-6">
             <p className="text-[var(--text-secondary)] text-sm">
-              找到 <span className="text-[var(--accent-color)] font-semibold">{filteredProjects.length}</span> 个项目
+              {t('home.results.found', { count: filteredProjects.length })}
             </p>
-            <div className="text-xs text-[var(--text-muted)]">
-              按 Star 数排序
-            </div>
+            <button
+              onClick={() => setShowNewStars(!showNewStars)}
+              className="text-sm cursor-pointer transition-all duration-200"
+            >
+              <span className={showNewStars ? 'text-[var(--text-muted)] text-xs' : 'text-[var(--accent-color)] font-semibold text-base'}>{t('home.results.thousandStars')}</span>
+              <span className="text-[var(--text-muted)] text-xs mx-0.5">/</span>
+              <span className={!showNewStars ? 'text-[var(--text-muted)] text-xs' : 'text-[var(--accent-color)] font-semibold text-base'}>{t('home.results.risingStars')}</span>
+            </button>
           </div>
 
           {/* Projects Grid */}
@@ -562,26 +547,28 @@ function Home() {
 
                   {/* Description */}
                   <p className="text-[var(--text-secondary)] text-sm mb-4 line-clamp-2 leading-relaxed">
-                    {project.chineseDescription}
+                    {isZh
+                      ? (project.chineseDescription || project.descriptionZh || project.description || '').substring(0, 120) + '...'
+                      : (project.description || project.detailedDescription || '').substring(0, 120) + '...'}
                   </p>
 
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     <span className="tag tag-accent">
-                      {categoryLabels[project.category] || project.category}
+                      {getCategoryLabel(project.category, language)}
                     </span>
                     {(project.useCases || []).slice(0, 2).map((useCase, i) => (
                       <span key={i} className="tag">
-                        {useCase}
+                        {getUseCaseLabel(useCase, language)}
                       </span>
                     ))}
                   </div>
 
                   {/* Footer */}
                   <div className="pt-4 border-t border-[var(--border-color)] flex justify-between items-center">
-                    <span className="text-xs text-[var(--text-muted)]">{project.country || '未知'}</span>
+                    <span className="text-xs text-[var(--text-muted)]">{project.country || t('common.unknown')}</span>
                     <span className="text-[var(--accent-color)] text-sm group-hover:translate-x-1 transition-transform">
-                      查看详情 →
+                      {t('common.viewDetails')}
                     </span>
                   </div>
                 </Link>
@@ -590,13 +577,13 @@ function Home() {
           ) : (
             <div className="text-center py-20">
               <div className="text-4xl mb-4 text-[var(--text-muted)]">🔍</div>
-              <h3 className="font-serif text-2xl mb-2">未找到匹配项目</h3>
-              <p className="text-[var(--text-muted)] mb-6">请尝试调整筛选条件</p>
+              <h3 className="font-serif text-2xl mb-2">{t('home.emptyState.title')}</h3>
+              <p className="text-[var(--text-muted)] mb-6">{t('home.emptyState.description')}</p>
               <button
                 onClick={clearFilters}
                 className="btn btn-primary"
               >
-                清除筛选
+                {t('home.emptyState.clearFilters')}
               </button>
             </div>
           )}
@@ -606,12 +593,12 @@ function Home() {
         <footer className="border-t border-[var(--border-color)] py-12 mt-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Logo className="text-[var(--accent-color)] mx-auto mb-4" size={32} />
-            <p className="font-serif text-lg mb-2">Awesome Harness - AI Agent 开源生态</p>
+            <p className="font-serif text-lg mb-2">{t('home.footer.title')}</p>
             <p className="text-sm text-[var(--text-muted)]">
-              {stats.establishedCount} 个精选项目 · {stats.risingCount} 个新生代项目 · {stats.aiBuilderCount} 位 AI Builder
+              {t('home.footer.stats', { established: stats.establishedCount, rising: stats.risingCount, builders: stats.aiBuilderCount })}
             </p>
             <p className="text-xs text-[var(--text-muted)] mt-4">
-              专注 AI Agent Harness 范式 · 去中心化智能 · 开源共建
+              {t('home.footer.tagline')}
             </p>
           </div>
         </footer>
