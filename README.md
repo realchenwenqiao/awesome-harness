@@ -41,7 +41,7 @@
 ## 🚀 快速开始
 
 ### 在线使用
-直接访问 [GitHub Pages 部署站点](https://joe.github.io/awesome-cnbigcompany-hub/)
+直接访问 [GitHub Pages 部署站点](https://realchenwenqiao.github.io/awesome-harness/)
 
 ### 本地开发
 

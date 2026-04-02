@@ -9,7 +9,7 @@
 ### 1. 项目列表 JSON
 
 ```
-GET https://awesome-cnbigcompany-hub.vercel.app/src/data/projects.json
+GET https://awesome-harness.vercel.app/src/data/projects.json
 ```
 
 返回完整的项目列表数组。

@@ -78,8 +78,8 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/joe/awesome-cnbigcompany-hub.git
-cd awesome-cnbigcompany-hub
+git clone https://github.com/realchenwenqiao/awesome-harness.git
+cd awesome-harness
 
 # 安装依赖
 npm install

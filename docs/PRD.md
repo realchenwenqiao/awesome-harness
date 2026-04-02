@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-**名称**: 中国大厂开源精选 (awesome-cnbigcompany-hub)
+**名称**: AI Agent Harness 开源生态 (awesome-harness)
 **定位**: 面向国内用户的中国互联网大厂开源项目精选网站
 **目标用户**: 开发者、AI Agent、技术研究者
 **技术栈**: React + Vite + Tailwind CSS
